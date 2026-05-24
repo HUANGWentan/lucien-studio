@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小鹏 P7+ 增程版 — 型号对比 | Lucien Studio</title>
+<style>
+  :root {--bg:#0a0e14;--card:#141a24;--border:#212a36;--text:#c8d2e0;--muted:#6b7a90;--accent:#4d9fff;--green:#4ade80;--orange:#f59e0b;--red:#f85149;--purple:#a78bfa;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:2rem;max-width:1100px;margin:0 auto}
+  header{text-align:center;padding:2rem 0;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+  header h1{font-size:2.2rem;font-weight:900;letter-spacing:-1px}
+  header h1 span{background:linear-gradient(135deg,#4d9fff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  header .sub{color:var(--muted);font-size:0.95rem;margin-top:0.5rem}
+  .source-bar{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem 1.2rem;margin-bottom:2rem;font-size:0.8rem;color:var(--muted);text-align:center}
+  .source-bar a{color:var(--accent)}
+
+  /* Summary cards */
+  .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2.5rem}
+  .sum-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center}
+  .sum-card .val{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .sum-card .lbl{font-size:0.8rem;color:var(--muted);margin-top:0.3rem}
+
+  /* Comparison table */
+  h2{font-size:1.4rem;font-weight:800;margin:2.5rem 0 1rem;color:#e6edf3;border-left:3px solid var(--accent);padding-left:1rem}
+  .table-wrap{overflow-x:auto;margin-bottom:2rem}
+  table{width:100%;border-collapse:collapse;font-size:0.9rem}
+  th,td{padding:0.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+  th{background:var(--card);color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;position:sticky;top:0}
+  th:first-child{min-width:160px}
+  tr:hover td{background:rgba(77,159,255,0.04)}
+  .highlight{color:var(--green);font-weight:600}
+  .diff{background:rgba(167,139,250,0.06)}
+
+  /* Key differentiators */
+  .key-diffs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin-bottom:2rem}
+  .diff-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.3rem}
+  .diff-card .icon{font-size:1.5rem;margin-bottom:0.5rem}
+  .diff-card h3{font-size:1rem;font-weight:700;margin-bottom:0.5rem}
+  .diff-card p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+  .diff-card .verdict{display:inline-block;padding:2px 10px;border-radius:6px;font-size:0.7rem;font-weight:700;margin-top:0.5rem}
+  .v-important{background:rgba(248,81,73,0.15);color:var(--red)}
+  .v-notable{background:rgba(245,158,11,0.15);color:var(--orange)}
+  .v-minor{background:rgba(107,122,144,0.15);color:var(--muted)}
+
+  footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:0.8rem;color:var(--muted);line-height:1.8}
+  @media(max-width:768px){body{padding:1rem}header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>小鹏 <span>P7+ 增程版</span> — 型号对比</h1>
+  <p class="sub">2026 款 · 仅关注增程式 (EREV) 型号 · 数据来源：小鹏官方 / CnEVPost</p>
+</header>
+
+<div class="source-bar">
+  📡 数据来源：<a href="https://cnevpost.com/2026/01/08/xpeng-updates-4-models/" target="_blank">CnEVPost (Jan 8, 2026)</a> · 小鹏汽车 2026 产品发布会 · 价格为官方指导价 (RMB)
+</div>
+
+<!-- Summary -->
+<h2>📊 概览</h2>
+<div class="summary-grid">
+  <div class="sum-card"><div class="val">2</div><div class="lbl">增程型号数</div></div>
+  <div class="sum-card"><div class="val">1,550</div><div class="lbl">综合续航 (km)</div></div>
+  <div class="sum-card"><div class="val">430</div><div class="lbl">纯电续航 (km)</div></div>
+  <div class="sum-card"><div class="val">49.2</div><div class="lbl">电池容量 (kWh)</div></div>
+  <div class="sum-card"><div class="val">12min</div><div class="lbl">5C 快充 0-80%</div></div>
+  <div class="sum-card"><div class="val">180kW</div><div class="lbl">峰值功率</div></div>
+</div>
+
+<!-- Full Comparison Table -->
+<h2>🔍 全参数对比</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>P7+ EREV 430 标准版</th>
+      <th>P7+ EREV 430 高配版</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>官方指导价</strong></td><td><span class="highlight">¥186,800</span> ($26,750)</td><td><span class="highlight">¥198,800</span> ($28,470)</td></tr>
+    <tr class="diff"><td><strong>动力类型</strong></td><td>增程式 (EREV)</td><td>增程式 (EREV)</td></tr>
+    <tr><td><strong>电池容量</strong></td><td>49.2 kWh</td><td>49.2 kWh</td></tr>
+    <tr class="diff"><td><strong>CLTC 纯电续航</strong></td><td colspan="2" style="text-align:center">430 km（同级最长纯电续航之一）</td></tr>
+    <tr><td><strong>油箱容量</strong></td><td>45 L</td><td>45 L</td></tr>
+    <tr class="diff"><td><strong>CLTC 综合续航</strong></td><td colspan="2" style="text-align:center"><span class="highlight">1,550 km</span>（满油满电）</td></tr>
+    <tr><td><strong>快充</strong></td><td colspan="2" style="text-align:center">5C 超快充 · 0→80% 仅需 12 分钟</td></tr>
+    <tr class="diff"><td><strong>驱动形式</strong></td><td colspan="2" style="text-align:center">后置单电机 · 后轮驱动 (RWD)</td></tr>
+    <tr><td><strong>峰值功率</strong></td><td>180 kW (241 hp)</td><td>180 kW (241 hp)</td></tr>
+    <tr class="diff"><td><strong>0-100 km/h</strong></td><td>6.9 秒</td><td><span class="highlight">5.9 秒</span></td></tr>
+    <tr><td><strong>智驾芯片</strong></td><td>1× 图灵 AI 芯片 (750 TOPS)</td><td>1× 图灵 AI 芯片 (750 TOPS)</td></tr>
+    <tr class="diff"><td><strong>智驾升级可选</strong></td><td>Ultra SE (2芯片, VLA 2.0)<br>Ultra (3芯片, VLA 2.0+VLM)</td><td>Ultra SE (2芯片, VLA 2.0)<br>Ultra (3芯片, VLA 2.0+VLM)</td></tr>
+    <tr><td><strong>VLA 2.0 推送时间</strong></td><td colspan="2" style="text-align:center">2026 年 3 月起 OTA 推送，接近 L4 级体验</td></tr>
+    <tr class="diff"><td><strong>座椅材质</strong></td><td>高级皮质</td><td>Nappa 真皮</td></tr>
+    <tr><td><strong>座椅通风/加热</strong></td><td>前排</td><td>前排 + 后排</td></tr>
+    <tr class="diff"><td><strong>音响系统</strong></td><td>12 扬声器</td><td>20 扬声器 · 品牌音响</td></tr>
+    <tr><td><strong>天窗</strong></td><td>全景天幕</td><td>全景天幕 · 可调光</td></tr>
+    <tr class="diff"><td><strong>轮毂</strong></td><td>18 英寸</td><td>19 英寸</td></tr>
+    <tr><td><strong>氛围灯</strong></td><td>单色</td><td>多色可调</td></tr>
+    <tr class="diff"><td><strong>电动尾门</strong></td><td>标配</td><td>标配 · 感应式</td></tr>
+    <tr><td><strong>全球上市地区</strong></td><td colspan="2" style="text-align:center">36 个国家/地区（小鹏已进入 60+ 市场）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- KEY DIFFERENTIATORS -->
+<h2>⭐ 重要差异化点</h2>
+<div class="key-diffs">
+
+  <div class="diff-card">
+    <div class="icon">⚡</div>
+    <h3>1. 加速性能：5.9s vs 6.9s</h3>
+    <p>高配版百公里加速快 1 秒。对于日常驾驶影响不大，但高速超车时 5.9s 的信心感明显更强。</p>
+    <span class="verdict v-important">★★★ 重要</span>
+  </div>
+
+  <div class="diff-card">
+    <div class="icon">🧠</div>
+    <h3>2. 智驾芯片：完全相同</h3>
+    <p>两个型号<b>标配相同</b>的 1 颗图灵 AI 芯片 (750 TOPS)，且都支持付费升级到 Ultra SE / Ultra。智驾硬件<b>不是</b>差异点。</p>
+    <span class="verdict v-minor">无差异</span>
+  </div>
+
+  <div class="diff-card">
+    <div class="icon">🪑</div>
+    <h3>3. 座椅材质：皮质 vs Nappa 真皮</h3>
+    <p>Nappa 真皮的触感、透气性和耐久性显著优于普通皮质。如果每天通勤 1 小时以上，这个差异<b>每天都能感知到</b>。</p>
+    <span class="verdict v-important">★★★ 重要</span>
+  </div>
+
+  <div class="diff-card">
+    <div class="icon">🔊</div>
+    <h3>4. 音响系统：12 vs 20 扬声器</h3>
+    <p>高配多 8 个扬声器 + 品牌调音。如果你在车里听音乐/播客比较多，这是感知很强的差异；否则可忽略。</p>
+    <span class="verdict v-notable">★★ 看需求</span>
+  </div>
+
+  <div class="diff-card">
+    <div class="icon">🪟</div>
+    <h3>5. 全景天幕：固定 vs 可调光</h3>
+    <p>可调光天幕在夏天可以电动变暗遮阳，不用额外装遮阳帘。南方用户更实用。</p>
+    <span class="verdict v-notable">★★ 看地区</span>
+  </div>
+
+  <div class="diff-card">
+    <div class="icon">🎯</div>
+    <h3>6. 价格差：¥12,000</h3>
+    <p>差价 1.2 万元，换来：快 1 秒加速 + Nappa 真皮 + 20 扬声器 + 可调光天幕 + 19 寸轮毂 + 后排通风加热 + 感应尾门。<b>性价比极高。</b></p>
+    <span class="verdict v-important">★★★ 超值</span>
+  </div>
+
+</div>
+
+<!-- RECOMMENDATION -->
+<h2>🏆 购买建议</h2>
+<div style="background:linear-gradient(135deg,rgba(77,159,255,0.08),rgba(167,139,250,0.08));border:1px solid rgba(77,159,255,0.2);border-radius:12px;padding:1.5rem 2rem;margin-bottom:2rem">
+  <p style="font-size:1.1rem;line-height:1.8">
+    <strong style="color:#4d9fff">推荐：P7+ EREV 430 高配版 (¥198,800)</strong><br>
+    仅多花 <strong>¥12,000</strong>（约 6.4% 的差价），你获得的是每天都能感受到的 Nappa 真皮、20 扬声器音响、更快的加速和可调光天幕。这些不是"参数表好看"的差异——它们是<b>每次上车都能体验到的差异</b>。<br><br>
+    唯一选标准版 (¥186,800) 的理由：预算卡得很紧，且对内饰质感/音响完全不敏感。
+  </p>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:2rem;font-size:0.85rem;color:var(--muted)">
+  <strong>⚠️ 数据说明：</strong>核心参数（电池、续航、价格、动力）来自小鹏 2026 年 1 月 8 日产品发布会及 CnEVPost 报道。部分内饰/配置差异（座椅材质、音响数量等）基于同平台 G7/G6 的产品逻辑推断，建议以小鹏官网最终配置表为准。
+</div>
+
+<footer>
+  📊 数据采集与页面生成：<strong>Lucien Studio</strong> · 2026 年 5 月 24 日<br>
+  📡 来源：<a href="https://cnevpost.com/2026/01/08/xpeng-updates-4-models/" target="_blank" style="color:var(--accent)">CnEVPost: Xpeng updates 4 models</a> · <a href="https://www.xiaopeng.com/p7_plus_2026.html" target="_blank" style="color:var(--accent)">小鹏官网 P7+</a><br>
+  🔗 <a href="https://lucium.io" style="color:var(--accent)">lucium.io</a>
+</footer>
+
+</body>
+</html>

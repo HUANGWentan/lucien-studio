@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucien Studio — AI Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #faf6ef;
+    --meadow: #5a9e6f;
+    --forest: #1e3a28;
+    --text: #1a1a18;
+    --text-soft: #5a5750;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--canvas);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grain texture */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ═══ Nav ═══ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100; padding: 0.8rem 0;
+    transition: background 0.3s;
+  }
+  nav.scrolled { background: rgba(250,246,239,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,190,175,0.2); }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: white; letter-spacing: -0.3px;
+    transition: color 0.3s;
+  }
+  nav.scrolled .logo { color: var(--forest); }
+  .logo-leaf { display: inline-block; margin-right: 0.3rem; animation: sway 4s ease-in-out infinite; }
+  @keyframes sway { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)} }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+  nav.scrolled .nav-links a { color: var(--text-soft); }
+  .nav-links a:hover { color: white; }
+  nav.scrolled .nav-links a:hover { color: var(--meadow); }
+  .nav-cta {
+    padding: 0.35rem 1.1rem !important; border-radius: 1584px;
+    font-weight: 600 !important;
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(4px);
+    transition: all 0.2s !important;
+  }
+  nav.scrolled .nav-cta { background: var(--forest) !important; color: white !important; border: none; }
+  .nav-cta:hover { background: rgba(255,255,255,0.25) !important; }
+  nav.scrolled .nav-cta:hover { background: var(--meadow) !important; }
+
+  /* ═══════════════════════════════════════
+     SHARED SECTION STYLE — immersive bg
+     ═══════════════════════════════════════ */
+  .immersive {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .immersive-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+  .immersive-overlay {
+    position: absolute; inset: 0;
+  }
+  .immersive-content {
+    position: relative; z-index: 2;
+    max-width: 580px; padding: 6rem 0;
+  }
+  .tag {
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 2px; font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .tag-light { color: rgba(255,255,255,0.6); }
+  .tag-meadow { color: #a8e0b0; }
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem; font-weight: 800;
+    line-height: 1.12; letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    font-size: 1.05rem; line-height: 1.75;
+    margin-bottom: 2rem; max-width: 440px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.6rem; border-radius: 1584px;
+    font-weight: 600; font-size: 0.88rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-white { background: white; color: var(--forest); box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
+  .btn-white:hover { box-shadow: 0 6px 26px rgba(0,0,0,0.18); }
+  .btn-ghost-white { border: 1.5px solid rgba(255,255,255,0.35); color: white; background: transparent; }
+  .btn-ghost-white:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
+
+  /* Stats bar */
+  .stats-bar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(250,246,239,0.92);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(200,190,175,0.25);
+    padding: 1.2rem 0; z-index: 3;
+  }
+  .stats-bar .container { display: flex; gap: 3rem; justify-content: center; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 800; color: var(--forest); }
+  .stat-label { font-size: 0.75rem; color: var(--text-soft); letter-spacing: 0.4px; }
+
+  /* ═══ HERO — Forest ═══ */
+  #hero .immersive-bg {
+    background-image: url('/img/forest.jpg');
+  }
+  #hero .immersive-overlay {
+    background: linear-gradient(135deg, rgba(30,58,40,0.85) 0%, rgba(30,58,40,0.55) 50%, rgba(30,58,40,0.2) 100%);
+  }
+  #hero .section-title { font-size: 3.6rem; color: white; }
+  #hero .section-title .accent { color: #a8e0b0; }
+  #hero .section-title em { font-style: italic; color: #f0d4a8; }
+  #hero .section-desc { color: rgba(255,255,255,0.75); }
+  #hero .tag { color: rgba(255,255,255,0.5); }
+  #hero .dot { display: inline-block; width: 6px; height: 6px; background: #7dd88f; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ═══ SERVICES — Mountains ═══ */
+  #services .immersive-bg {
+    background-image: url('/img/mountains.jpg');
+  }
+  #services .immersive-overlay {
+    background: linear-gradient(135deg, rgba(20,30,40,0.82) 0%, rgba(30,50,60,0.65) 50%, rgba(40,60,70,0.3) 100%);
+  }
+  #services .section-title { color: white; }
+  #services .section-desc { color: rgba(255,255,255,0.72); }
+
+  /* Service items — NOT cards, just text items */
+  .service-list { list-style: none; margin-top: 1.5rem; }
+  .service-item {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .service-item:last-child { border-bottom: none; }
+  .service-item .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.15rem; }
+  .service-item h3 { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.92); margin-bottom: 0.15rem; }
+  .service-item p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+  /* ═══ NEWS — Meadow/dark ═══ */
+  #news .immersive {
+    min-height: 80vh;
+  }
+  #news .immersive-bg {
+    background-image: url('/img/meadow.jpg');
+  }
+  #news .immersive-overlay {
+    background: linear-gradient(180deg, rgba(20,30,20,0.88) 0%, rgba(20,30,20,0.75) 100%);
+  }
+  #news .section-title { color: white; }
+  #news .section-desc { color: rgba(255,255,255,0.65); }
+
+  .news-items { margin-top: 1.5rem; display: flex; flex-direction: column; }
+  .news-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none; color: inherit;
+    position: relative;
+    transition: padding 0.3s, background 0.3s, border-color 0.3s;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-item::before {
+    content: '';
+    position: absolute; inset: 0 -0.6rem;
+    border-radius: 10px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: background 0.35s, backdrop-filter 0.35s;
+    z-index: 0;
+  }
+  .news-item:hover::before {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .news-item:hover { border-bottom-color: transparent; }
+  .news-item:last-child:hover { border-bottom-color: transparent; }
+  .news-item .badge,
+  .news-item .info,
+  .news-item .arrow { position: relative; z-index: 1; }
+  .news-item .badge {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: #a8e0b0;
+    background: rgba(168,224,176,0.1);
+    padding: 2px 8px; border-radius: 1584px;
+    flex-shrink: 0; min-width: 60px; text-align: center;
+  }
+  .news-item .info { flex: 1; }
+  .news-item .info h3 { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.9); }
+  .news-item .info p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+  .news-item .arrow { color: rgba(255,255,255,0.25); font-size: 0.9rem; transition: transform 0.3s, color 0.3s; }
+  .news-item:hover .arrow { transform: translateX(3px); color: rgba(255,255,255,0.5); }
+
+  /* ═══ CTA — Golden hour ═══ */
+  #contact .immersive-bg {
+    background-image: url('/img/golden.jpg');
+  }
+  #contact .immersive-overlay {
+    background: linear-gradient(135deg, rgba(40,30,15,0.78) 0%, rgba(60,40,20,0.55) 50%, rgba(80,50,20,0.25) 100%);
+  }
+  #contact .section-title { color: white; font-size: 2.4rem; }
+  #contact .section-desc { color: rgba(255,255,255,0.72); }
+  #contact .immersive-content { max-width: 500px; text-align: center; margin: 0 auto; }
+
+  /* ═══ Footer ═══ */
+  footer {
+    padding: 2rem 0; background: var(--forest);
+    font-size: 0.78rem; color: rgba(255,255,255,0.4);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+  }
+  footer a { color: #a8e0b0; text-decoration: none; }
+
+  @media (max-width: 768px) {
+    #hero .section-title { font-size: 2.4rem; }
+    #services .section-title { font-size: 2rem; }
+    #contact .section-title { font-size: 1.8rem; }
+    .nav-links { display: none; }
+    .immersive-content { padding: 5rem 0 4rem; }
+    .stats-bar .container { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .container { padding: 0 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="logo"><span class="logo-leaf">🌿</span> Lucien Studio</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#news">AI Daily</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO — Forest ═══ -->
+<section id="hero" class="immersive">
+  <div class="immersive-bg"></div>
+  <div class="immersive-overlay"></div>
+  <div class="container">
+    <div class="immersive-content">
+      <div class="tag"><span class="dot"></span>&nbsp; Accepting new clients — May 2026</div>
+      <h1 class="section-title">Grow Your <span class="accent">AI</span> Strategy, <em>Naturally</em></h1>
+      <p class="section-desc">We help ambitious companies cultivate AI solutions that flourish — from seed ideas to thriving, production-ready systems.</p>
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+        <a href="#contact" class="btn btn-white">Start a Project →</a>
+        <a href="#news" class="btn btn-ghost-white">Read AI Daily →</a>
+      </div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Clients Served</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Core Services</div></div>
+      <div class="stat"><div class="stat-num">Daily</div><div class="stat-label">AI Intelligence</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES — Mountains ═══ -->
+<section id="services" class="immersive">
+  <div class="immersive-bg"></div>
+  <div class="immersive-overlay"></div>
+  <div class="container">
+    <div class="immersive-content" style="max-width:560px;">
+      <div class="tag tag-meadow">What We Do</div>
+      <h2 class="section-title">Cultivated<br>for Impact</h2>
+      <p class="section-desc">From strategy to deployment, we nurture AI solutions that take root in your business and grow with it.</p>
+      <ul class="service-list">
+        <li class="service-item">
+          <span class="icon">🌱</span>
+          <div><h3>AI Strategy & Roadmap</h3><p>Audit workflows, identify high-ROI opportunities, and build a phased plan.</p></div>
+        </li>
+        <li class="service-item">
+          <span class="icon">⚙️</span>
+          <div><h3>Agent & Workflow Automation</h3><p>Design and deploy AI agents that automate complex business processes.</p></div>
+        </li>
+        <li class="service-item">
+          <span class="icon">📡</span>
+          <div><h3>AI Intelligence & Monitoring</h3><p>Daily news briefings, competitor analysis, and emerging tech radar.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWS — Dark meadow ═══ -->
+<section id="news">
+  <div class="immersive">
+    <div class="immersive-bg"></div>
+    <div class="immersive-overlay"></div>
+    <div class="container">
+      <div class="immersive-content" style="max-width:560px;">
+        <div class="tag tag-meadow">AI Daily</div>
+        <h2 class="section-title">Today's Intelligence</h2>
+        <p class="section-desc">Curated from 20+ sources. Policy → Tech → Rumors. Updated daily.</p>
+        <div class="news-items">
+          <a href="/ai-news-latest.html" class="news-item">
+            <span class="badge">Latest</span>
+            <div class="info"><h3>🇺🇸 今日美国 AI 新闻速递</h3><p>22 stories · Click to expand inline</p></div>
+            <span class="arrow">→</span>
+          </a>
+          <a href="/xpeng-p7plus-erev.html" class="news-item">
+            <span class="badge">Research</span>
+            <div class="info"><h3>🚗 小鹏 P7+ 增程版对比</h3><p>2 EREV trims · Specs & recommendation</p></div>
+            <span class="arrow">→</span>
+          </a>
+          <div class="news-item" style="cursor:default;">
+            <span class="badge" style="opacity:0.5;">Next</span>
+            <div class="info" style="opacity:0.5;"><h3>🌅 Tomorrow's briefing</h3><p>Auto-generated daily at 11:00 AM</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA — Golden hour ═══ -->
+<section id="contact" class="immersive" style="min-height:70vh;">
+  <div class="immersive-bg"></div>
+  <div class="immersive-overlay"></div>
+  <div class="container">
+    <div class="immersive-content" style="text-align:center; max-width:500px; margin:0 auto;">
+      <div class="tag tag-meadow">Let's Talk</div>
+      <h2 class="section-title">Ready to Grow?</h2>
+      <p class="section-desc" style="margin-left:auto; margin-right:auto;">Whether you need strategy, automation, or daily intelligence — we're here to help your ideas take root.</p>
+      <a href="mailto:hello@lucium.io" class="btn btn-white">Email hello@lucium.io →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:0.5rem;">
+    <span>© 2026 Lucien Studio</span>
+    <span>AI Consulting · Strategy · Automation 🌿</span>
+  </div>
+</footer>
+
+<script>
+// Nav: transparent on hero, solid on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+</script>
+</body>
+</html>

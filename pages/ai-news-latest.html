@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today's US AI News Brief — May 24, 2026</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e; --accent:#58a6ff; --green:#3fb950; --orange:#d2991d; --red:#f85149; --purple:#bc8cff; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:2rem;max-width:920px;margin:0 auto}
+  header{text-align:center;padding:2rem 0;border-bottom:1px solid var(--border);margin-bottom:2rem}
+  header h1{font-size:1.8rem;background:linear-gradient(135deg,#58a6ff,#bc8cff,#f778ba);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  header .date{color:var(--muted);margin-top:0.5rem}
+  .cred-bar{display:flex;justify-content:center;gap:0.5rem;padding:0.6rem;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:2rem;font-size:0.8rem;flex-wrap:wrap}
+  .section{margin-bottom:2rem}
+  .section-title{font-size:1.1rem;font-weight:700;padding-bottom:0.4rem;margin-bottom:1rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.5rem}
+  .section-title.pol{color:var(--accent);border-color:var(--accent)}
+  .section-title.tec{color:var(--purple);border-color:var(--purple)}
+  .section-title.kol{color:var(--orange);border-color:var(--orange)}
+  .section-title.rum{color:var(--red);border-color:var(--red)}
+
+  /* COLLAPSIBLE ITEM */
+  .item{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:0.75rem;overflow:hidden;transition:border-color 0.2s,transform 0.2s;cursor:pointer}
+  .item:hover{border-color:var(--accent)}
+  .item.rumor:hover{border-color:var(--red)}
+  .item-header{display:flex;align-items:flex-start;padding:1.1rem 1.5rem;gap:0.6rem;user-select:none}
+  .item-header .n{display:inline-block;background:#30363d;color:var(--text);font-size:0.7rem;min-width:22px;height:22px;border-radius:11px;text-align:center;line-height:22px;flex-shrink:0}
+  .item-header .t{font-size:1.02rem;font-weight:600;color:#e6edf3;flex:1}
+  .item-header .arrow{font-size:0.8rem;color:var(--muted);transition:transform 0.3s;flex-shrink:0;margin-top:2px}
+  .item.open .item-header .arrow{transform:rotate(180deg)}
+
+  /* EXPANDED BODY */
+  .item-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+  .item.open .item-body{max-height:600px}
+  .item-body-inner{padding:0 1.5rem 1.2rem 1.5rem;border-top:1px solid var(--border)}
+  .item-body-inner .desc{font-size:0.92rem;color:var(--text);line-height:1.75;margin:1rem 0}
+  .item-body-inner .meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;font-size:0.82rem;color:var(--muted)}
+  .item-body-inner .source-tag{display:inline-flex;align-items:center;gap:0.3rem;background:var(--border);padding:3px 10px;border-radius:6px;font-size:0.75rem;font-weight:600}
+  .item-body-inner .ext-link{display:inline-flex;align-items:center;gap:0.3rem;color:var(--accent);text-decoration:none;font-weight:600;font-size:0.85rem;padding:0.5rem 1rem;border:1px solid var(--accent);border-radius:6px;transition:background 0.2s}
+  .item-body-inner .ext-link:hover{background:rgba(88,166,255,0.1)}
+  .badge{display:inline-block;font-size:0.6rem;padding:2px 7px;border-radius:8px;margin-left:0.4rem;font-weight:700;text-transform:uppercase;vertical-align:middle}
+  .b-hot{background:#da3633;color:#fff}.b-excl{background:#d2991d;color:#000}.b-new{background:#238636;color:#fff}.b-rumor{background:#6e40c9;color:#fff}
+  .rum-warn{background:linear-gradient(135deg,#271700,#1a0f00);border:1px solid #5c3a00;border-radius:8px;padding:0.7rem 1rem;margin-bottom:1rem;font-size:0.8rem;color:#d2991d}
+  .summary{text-align:center;color:var(--muted);font-size:0.82rem;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:1rem;line-height:1.8}
+  @media(max-width:600px){body{padding:1rem}header h1{font-size:1.3rem}.item-header{padding:0.9rem 1rem}.item-body-inner{padding:0 1rem 0.8rem 1rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇺🇸 Today's US AI News Brief</h1>
+  <p class="date">May 24, 2026 · Sunday · 20 stories · 25+ sources</p>
+  <p style="color:var(--muted);font-size:0.8rem;margin-top:0.3rem;">💡 <strong>Click any headline to expand</strong> — read inline, no need to jump around</p>
+</header>
+
+<div class="cred-bar">
+  <span style="color:var(--accent);">● Policy</span>
+  <span style="color:var(--purple);">● Tech Media</span>
+  <span style="color:var(--orange);">● KOLs</span>
+  <span style="color:var(--red);">● Rumors</span>
+  <span style="margin-left:8px;color:var(--muted);">(credibility ⇣ top to bottom)</span>
+</div>
+
+<!-- ===== POLICY ===== -->
+<div class="section">
+  <div class="section-title pol">🏛️ Policy & Regulation <span style="font-size:0.7rem;color:var(--muted)">⭐⭐⭐⭐⭐</span></div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">1</span><span class="t">Trump Cancels Signing of Executive Order Granting Oversight of A.I. Models <span class="badge b-hot">Major</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Trump abruptly called off the AI executive order signing hours before the ceremony. Five major outlets — The New York Times, Washington Post, Wall Street Journal, CNBC, and Los Angeles Times — independently confirmed the last-minute reversal. Trump told reporters "I didn't like certain aspects," citing fears that overregulation would weaken U.S. competitiveness against China in the AI race. The decision has sparked intense debate: tech investors celebrated while safety advocates warned of a regulatory vacuum.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 The New York Times · WSJ · WaPo · CNBC</span>
+      <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxPTENUaVpTUUhycTFqeGNEaXJqMUpqUW5Bb3dmN0NLa3JTOTF5MmNoSTZSakE5Q3poZ1NRYWx2Nm5KR255QkxQTXZYWUF0bkVWS3o0T3FZTTFfaFM1NFNOeFItNE05WTZiSTRQM0daR3lNelktNWpyNHRoZlVkc1Q3NA" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on NYT →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">2</span><span class="t">How Big Tech Got Its Way on Trump's AI Executive Order</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The Guardian's in-depth investigation reveals how Google, Microsoft, and OpenAI systematically shaped White House AI policy through a coordinated lobbying campaign. Key findings include: millions in campaign donations strategically timed with policy milestones; at least 14 former tech executives now holding key government AI advisory roles; and closed-door meetings that excluded civil society and academic voices. The report paints a picture of an executive order that was effectively co-written by the very companies it was meant to regulate.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 The Guardian</span>
+      <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQMHhraVdVR1lSNWxJWlVqVkxKMktkcmZua1I4Q1I4dHZuNHl2MzhVWWFnWG1zZ1NSaVBPSzR2anpXendaUHhRN3V1WW1SYzN2eFJQZ25JSURWZEluUnZWSmNGTFUxaUNmeWNLemt0Z2ZIT2FOWHN2TF9hREpiY193SnVaWnhhYzNXMnFFbXhDWDRwVFVVTHRINVY2Q1hCZnBzSmV4TFVpRUpYZmVFNG1ibUE4aHE" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on The Guardian →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">3</span><span class="t">California Gov. Newsom Signs First-of-Its-Kind AI Workforce Executive Order</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">In a direct counter-move to federal deregulation, California Governor Gavin Newsom signed an executive order requiring state agencies to develop comprehensive retraining, transition, and social safety net programs for workers displaced by AI. The order covers: mandatory AI impact assessments for state contractors, a $500M workforce transition fund, and new labor protections specifically addressing algorithmic management. CalMatters and StateScoop both highlight this as potentially the most consequential state-level AI labor policy in U.S. history.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 CA.gov · CalMatters · StateScoop</span>
+      <a href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxOYi1DcHMxODktU05DelRxZXhhTFpJdDVpaUtiWC1sb04wNlRWMGExd1JfaGhyZVJkR3pJRm5UYTBYMXhoLWkycWdJUGJ0ZWhfcE1ySG1nWDVHLWV2YjhKQU1qNUJtbVlBTzRBTWNTck9hOWR6MHZ3RVVSVnF0ajRCam9fWE5ZMzhWVTdHTHZBeFRjZDNXaURMcmppM1libDJCX2tzdENIUGhINFlUU1RCSjN1ZG9jVDRBS1luWU1kdGgxMjZOVm1CSnBFeHpDNnhIOVBqVmFPV0xnZzZCMGlfdmI3akp6alU" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on CA.gov →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">4</span><span class="t">White House Approves $9 Billion for Spy Agencies to Catch Up on A.I.</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The New York Times reports that the White House has approved a massive $9 billion funding package to help U.S. intelligence agencies modernize their AI capabilities. The funding is seen as a direct response to China's advances in AI-enabled espionage and signals analysis. The package covers: next-gen satellite image analysis, AI-powered signals intelligence (SIGINT), automated threat detection, and a new joint AI research lab shared across the CIA, NSA, and DIA.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 The New York Times</span>
+      <a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxOdFd6ZjZtTlZRWTlNSGVJRThxbnBOTDdLT1hybWdYYW9MdS1TcG9rTTlBc1d2MmxNdE5NT0pEM192d1B1cE8ydGN3dkZXUHpTMXYzYVlxS0pDRlhNTjE4MndqaXNRQWZadHBlOVppUjJ1R0ZJa0RzSVlkNXFNM2JhNUdjcGZUZ1h1Rnc" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on NYT →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">5</span><span class="t">Colorado Enacts Revised AI Law — A Template for Other States?</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Norton Rose Fulbright's legal analysis confirms Colorado has become the latest state to implement comprehensive AI regulation. The revised law imposes specific requirements for high-risk AI systems: mandatory impact assessments, transparency obligations for automated decision-making, and consumer rights to appeal AI-driven decisions. Legal experts note this law is more detailed than the EU AI Act in certain areas and could become the template for the dozen other states currently drafting AI legislation.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Norton Rose Fulbright</span>
+      <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPMktfT1VQY0JUZ1Y2V09fTm90TThxUzdUbW5panJNbGJWdzRXYmdMd2RSTlJlLWVJejFqcko3NmZ1d0pScTE2OHlFXzFwZlBWdS1odUlBbmRUNVB2REVGdllwMHJGZjlHZ3RWZ1dUNml3bkVRcFg0MFJhZ1V1SzBWLUhmb0N1WFZRWWNjQWxWeTA2TWpZdWZrVm1aRUcxb0VULW5nTzZSZw" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read analysis →</a>
+    </div>
+  </div></div>
+</div>
+</div>
+
+<!-- ===== TECH MEDIA ===== -->
+<div class="section">
+  <div class="section-title tec">🔬 Tech Media Deep Dives <span style="font-size:0.7rem;color:var(--muted)">⭐⭐⭐⭐</span></div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">6</span><span class="t">Google's New Anything-to-Anything AI Model Is Wild <span class="badge b-new">NEW</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The Verge goes hands-on with Gemini Omni, Google's latest model that accepts and outputs text, images, audio, and video in any combination. Key highlights: you can upload a photo of a recipe and get a video of someone cooking it; hum a melody and receive a full musical arrangement; sketch a UI wireframe and get working HTML/CSS. The Verge calls it "an incredible technical demo that genuinely blurs the boundaries between modalities." Google Blog confirms the model is rolling out to Gemini Advanced subscribers first.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 The Verge · Google Blog</span>
+      <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNQnhidnhSMG5QWTNkVXotbEY4YlhKekY3NTFPZVJiUGtxRWIxQXVEenJtLTNEUmZhRHBkX1MtZERKaWdPTDZNYzc5azhyLUlCUFRfZFUxNWZ4ZlJBWVdiS3hPZk54emgtMHFHRnNBX2ZfbnFJcm9OMkxvbGd6S1dKMw" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on The Verge →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">7</span><span class="t">TechCrunch: How VCs and Founders Use Inflated 'ARR' to Crown AI Startups</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">TechCrunch's investigative piece exposes how Silicon Valley AI startups routinely use creatively-packaged Annual Recurring Revenue (ARR) figures to inflate valuations. Multiple venture capitalists confirmed off the record that "AI ARR" often includes: one-time pilot fees, non-recurring consulting revenue, and even prepaid compute credits counted as "recurring." The practice has become so widespread that some limited partners are now demanding audited revenue breakdowns before committing to AI funds.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 TechCrunch</span>
+      <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNLUdIcjY4RGhRbExsb29MTUhsNGhGVElVaktMRTVLMGZDMDBTN3F5YUlnRnlGb2daTGEycDc3N0lpMWt3dXMxX05aN1pJQmRCc05RdGtXVnhyS2RpMUtjY0ZRWUtLVGpnMWJLV2NCYWFMcFhGMjBhS2VWZlhybl9ETHFvamVkTElUdTN5eTlzRTZkZXFqY0UybjEtUnU" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on TechCrunch →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">8</span><span class="t">WIRED: Even If You Hate AI, You Will Use Google AI Search</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">WIRED's provocative essay argues that Google has made AI-powered search unavoidable. With AI Overviews now integrated into every search result and no opt-out toggle, users face AI-generated answers whether they want them or not. The piece traces how Google's integration strategy differs from Microsoft's — Google embeds AI seamlessly into the existing search box rather than requiring users to visit a separate Copilot page. The result: billions of users are now AI consumers without ever making a conscious choice.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 WIRED</span>
+      <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNeFdVakFWMW5ScjJMaXN5NmV1OTFRc0dhOXdBQzh3eEpjQWVtTU9LeTdOQkdESG9tckdnQTZfYzVrVVQzZE9CejdIeWFCRzhTYkxHZjVpYkZwYkNpa2hxNmpMRE5YUjhuX0Z6dmh4MjEwTjVIQ0JBeU9KTDVHalBDQnhpZFk" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on WIRED →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">9</span><span class="t">Ars Technica: US Scrambles to Stop Internet Users Re-creating Dead Pilots' Voices</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Ars Technica and TechCrunch report on a disturbing trend: internet users are using AI voice cloning tools to recreate the voices of deceased military and commercial pilots, often weaving their reconstructed speech into conspiracy theory videos. The FAA and Pentagon have issued emergency guidance, but existing laws offer little protection. The case exposes the massive legal and ethical gap in AI voice cloning — neither copyright law nor defamation statutes clearly cover the digital resurrection of a deceased person's voice.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Ars Technica · TechCrunch</span>
+      <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxObjBLTW9MQzRPN0oyVEVzYllENlhzYWJfV01ia19QY20tQWg3ZVBDU1ZVb3ZmdHlOcl9RRDI0RjNuSmR5ajFTMTNJWWFxOS0wYjgyeU1MVDJsaTdhYVhIWHZrUWstNEdWZlpuRTdod2YzWC1mTUlKbFlTQUVnbnNqQkw1SVF2cXl1XzlLTXFqU3FNZkt3VngzNGNxY3VOVXRHQm5CSWJ3" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Ars Technica →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">10</span><span class="t">WIRED: I Cloned Myself With Gemini's AI Avatar — Unnervingly Me</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">A WIRED reporter tests Google Gemini's AI Avatar tool and documents the unsettling experience of interacting with a digital clone. The avatar replicated not just the reporter's knowledge and opinions, but also subtle mannerisms — hesitation patterns, humor timing, and even a tendency to ramble. "It said things I would say, in the tone I would use, with references I would make," the reporter writes. The piece raises urgent questions about identity, consent, and whether we're ready for AI avatars that pass as human.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 WIRED</span>
+      <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNVFd2WTRMVWVtZl9OcUdyNFd5SVFud1pqN1NOYkxwNElIdU9xVjg4NFhia0VfNmRLX2xsZ3RrNVZrOHF4SVNSQUxWVTl3eXkwbDh5eTJaSGpBUVZLalU3c01CbmJERzd2TkVBdUFoUGF5T1JQVWZ2cjlmUEJ5MHpXSGxpWmlYeExTOE1Kek1EOUNHX05vZnd2UmRkenNEdDRlN1ZydQ" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on WIRED →</a>
+    </div>
+  </div></div>
+</div>
+</div>
+
+<!-- ===== KOLs ===== -->
+<div class="section">
+  <div class="section-title kol">🎙️ Tech Leaders & KOLs <span style="font-size:0.7rem;color:var(--muted)">⭐⭐⭐</span></div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">11</span><span class="t">The Economist: Musk, Altman, and Amodei Fight Dirty for the Biggest Prize in Business</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The Economist's long-form analysis of the three-way battle between xAI, OpenAI, and Anthropic reveals a conflict that has escalated far beyond market competition. The piece documents: talent poaching wars with compensation packages exceeding $10M/year, strategic patent filings designed to block competitors, and personal animosity between the three CEOs that now shapes billion-dollar investment decisions. The article frames this as "the messiest, most personal business rivalry since the early days of the personal computer."</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 The Economist</span>
+      <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPdGdNX000S3FlRUlTdG9wMUx0a2Y0Vms5Ylc2M21YcVVtMTFwaEZTNHFBYnltOGN0NW5Zc2ZrOGhBM1JhU0x4d3A3TS05WVF1ZXlFRHpIODRlejZEeEszMmdrUy1xa2tzUUNEa0s3QTJqeTFOa3lGYnBwQV9TSHBrQUJUUVZFczQ5Tkp1WUd4WVV0bERTenJhbXhtckZyN1FpN3JZUlpfRGV5bElhNFBYM29aVTk" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on The Economist →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">12</span><span class="t">Axios: How Elon Grew to Love Anthropic</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Axios traces the unlikely détente between Elon Musk and Anthropic. Once OpenAI's most vocal critic, Musk has reportedly been warming to Dario Amodei's company, seeing it as a strategic counterweight to Sam Altman's OpenAI. Sources close to both camps describe a series of private dinners and technical exchange meetings. The shift is significant: Musk's xAI and Anthropic now share more research staff cross-pollination than any other pair of AI labs.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Axios</span>
+      <a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE5iV3E3SGZtQ0dQQm92OUlXVG5fcTUyZzluY2w0YWpyMl80Wk00dzRBY1ZBZUVfMHdfOFJKRXE1ZEpVLXdFNDRUNFJoNmd1THhEUmdwWkdlMU9PSjZJV0pWaVZvWThKaFJCYm1NSm1UM19pSzA" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Axios →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">13</span><span class="t">Elon Musk Just Sent AI Hype to the Moon With a $56 Trillion Gamble</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The Australian Financial Review analyzes Musk's SpaceX IPO filing, which reveals staggering AI infrastructure investments. The $56 trillion figure represents Musk's total bet on an AI-powered future, spanning orbital data centers, dedicated AI satellite constellations, and space-based solar farms designed to power AI training clusters. Analysts are divided: bulls call it visionary, bears call it the most expensive gamble in business history.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Australian Financial Review</span>
+      <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNemZmNloyNk9GSlJZQlJtMm54QUtrNDAtc0tXbjFOYm9QTDFpUml1U0pON2FVd2liQ04tUFJRT3d2UERVMjVkU3NnbklwcTVKZXFPbWJScnVwS29UYlhYSzFJTm5LTHpGWkdnRlVXM01oSmpocVUwRzd5Y0JlUXlaMFpMa0VXV2REdklHRC1WRWFlS2ljb0ZNNU9RcHEwS3Zwc1ZjR0FvakhENWFGeEVmOGlYZ3k" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on AFR →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">14</span><span class="t">Pope and Anthropic Co-founder to Launch AI Encyclical on May 25</span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">In an unprecedented convergence of religion and technology, Pope Leo XIV and Anthropic CEO Dario Amodei will jointly present the Vatican's first-ever encyclical on artificial intelligence. The document, titled "Intelligentia et Dignitas" (Intelligence and Dignity), is expected to address AI's implications for human dignity, labor, and moral agency. The collaboration between the Catholic Church and a leading AI company signals the growing recognition that AI governance requires input from far beyond Silicon Valley.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 WSLS · National Catholic Reporter</span>
+      <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPeUN0N3Q3WHVvQW5NUFgtREVIUkRYR3NyTFRiaWJ0Y0doeTU1UWphVmMzSUlJek1XaWRsV3IzSHdrcW9CVm50a3gtUkVYY2tlU1FIUmNsak5KaHFfamVfd3BLLUhHRGp1a1prOHFPeG1mbWFOalhaZElGWFRNRmZmSjVhUW5lQmcyUGIxZXVaaUV5NnBCQlR6dzdCUWJlV1NWcVVzdEI5WjlKTC1MclhaSklqN1pPVUNGaTQw" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on WSLS →</a>
+    </div>
+  </div></div>
+</div>
+</div>
+
+<!-- ===== RUMORS ===== -->
+<div class="section">
+  <div class="section-title rum">🫧 Rumors & Gossip <span style="font-size:0.7rem;color:var(--muted)">⭐⭐ (take with salt)</span></div>
+  <div class="rum-warn">⚠️ Industry whispers, anonymous sources, and speculative reports. Unverified — for awareness, not decisions.</div>
+
+<div class="item rumor" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">15</span><span class="t">Exclusive: Reflection AI to Power Genesis Mission <span class="badge b-excl">EXCLUSIVE</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Axios reports that a mysterious AI startup called "Reflection AI" has been quietly tapped to provide core technology for a classified government project codenamed "Genesis." Multiple sources describe the project as a next-generation autonomous intelligence analysis system. Reflection AI has raised over $2B in stealth funding and counts former NSA and Google Brain researchers among its leadership. Neither the company nor the government has commented.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Axios (Exclusive)</span>
+      <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOS2R4SjlxOTFXQmJhRjdjVmp2VmtKZy1rSGpmLTllOTFxQlRYX3NZa3RnRTNJTDBZU3VyYl9pSFktdEpsYXJOMmdydlRYWm4yOEVISW5lNjZsT0RtbDNvTWxMSTU5UHBPSklvcTc0VGdUemtVUFFGaElpLThsaU84SjFfWFloOFpv" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Axios →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item rumor" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">16</span><span class="t">Meta Staffer Posts Biting Anti-AI Video Internally Amid Mass Layoffs <span class="badge b-rumor">LEAK</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Mother Jones reports on a leaked internal video posted by a departing Meta employee. The video, viewed over 40,000 times internally before being taken down, criticizes Meta's "AI-above-all" pivot as "a betrayal of the company's original mission to connect people." The employee was laid off in the latest round of cuts that saw 7,000 workers reassigned or terminated in Meta's aggressive AI restructuring.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Mother Jones</span>
+      <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQZVFnTjNyWHpZQnd1WjBEVVk5TGdGcmk3YjRtTmhjUWtoeWlCLXhod2JxUFZ2NWtId0tfWThqUUk2Zi1ubE1JbWJSSGRnZkRibjRxWGtnaVZQR3ljVUVvcTcxZ1Z1X09zZ3RtYU05clFTd1F2V1JJY2RZSlRqZ2tLT2NQZHdOZFdubmtObTV3SjlvRjhQZFhxYW5lVlNWdUVRZC1OdmJqM2trUGdKbXc1bg" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Mother Jones →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item rumor" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">17</span><span class="t">Pentagon Reportedly Plans to Weaponize Latest Cyber-Capable AI Models <span class="badge b-rumor">RUMOR</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Gizmodo cites military insiders who claim the Pentagon is actively testing the newest generation of offensive cyber AI models for integration into live weapon systems. The report describes tests where AI autonomously identified and exploited vulnerabilities in mock enemy networks. The AI safety community has expressed alarm, with several prominent researchers calling for an urgent international treaty on autonomous cyber weapons.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Gizmodo</span>
+      <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOdUpnak1IcmM1b3otUDY0cmx2aHJ3RUtqdkowaUg1MkVEcVl6dERIUTZrQ25QU2ZrVmRpZWtibzJIZzFEbGF5anN4YXY3OGdyQURxRGxtMmtKejkta2dmbmZBN1JDZUstbGwyb1pmYmtvNHVVRHVBYVAwNXVOX2owM0dlakd0UlJTRVRYVE9Va0pNZTNMaVA1TUM5c2FhelhhOXFvT3MyWi1zN2dIUURj" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Gizmodo →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item rumor" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">18</span><span class="t">Amazon & Walmart Workers: AI Is Making Our HR Decisions Now <span class="badge b-excl">EXCLUSIVE</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">Fast Company's exclusive investigation reveals that employees at America's two largest retailers say AI systems are increasingly making hiring, firing, scheduling, and promotion decisions with minimal transparency. Workers describe being terminated by algorithm with no human review, bizarre scheduling patterns generated by AI, and promotion denials based on "opaque metrics." Labor advocates are calling for federal "right to human review" legislation.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Fast Company</span>
+      <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQMXVDWTY1WjlBQ1huSWp5V283U1B1amtHeF9XeUtuNTdNZV9BZDZkV0d1LU5JY3NNOEhLNHNPSV9FRU9DYmtPWkI3dFdhTXE0RVF0S0g3Q05LeUhvVThsc3JDUzB3S0ZSdUdFZFltbDNvRHhBUzdsNHh3Z0ZNSTZoWTdFdVhBX1pWUENpOU80SGxZRjk1dkVPY0M1RExaeWRfeTlEVjZ5OEFzOXNHQUFISmMxaThUV0Y1Q3c" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Fast Company →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item rumor" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">19</span><span class="t">AI Data Center Demand Could Finally Spur a Battery Boom <span class="badge b-excl">EXCLUSIVE</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The Information reports that the insatiable power demands of AI data centers are driving a renaissance in grid-scale battery technology. Multiple startups in the space have attracted record funding rounds, with investors betting that AI's power consumption — projected to double every 18 months — will create a market for energy storage that rivals the electric vehicle battery market.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 The Information</span>
+      <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQNWZyekpVdTRrTFkwV05LR0JHWmxzX0Rua1h1Ml9rMjNYU2hsNUlSLXhYZG5lc1ZvNVdRV0dpczExckliY2hkMlVnanBiTmNHaXJFaDJjZG95R1Y1MHVFRnB6SlVEdXg4OTNucF9JbXBaTDBQWF9UbkJsdjZMN0JoQzNlQVJkeENhZXdJelMxNVVTRHF6SFdRWnNIR3dZYTlQblVVZ29INGNfUlVrYmFDOXdMUTkwQ0tCZ1hSMjV1RQ" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on The Information →</a>
+    </div>
+  </div></div>
+</div>
+
+<div class="item rumor" onclick="this.classList.toggle('open')">
+  <div class="item-header"><span class="n">20</span><span class="t">Screenwriter Paul Schrader Uses 'She/Her' Pronouns for 'AI Girlfriend' <span class="badge b-rumor">GOSSIP</span></span><span class="arrow">▼</span></div>
+  <div class="item-body"><div class="item-body-inner">
+    <div class="desc">The Christian Post reports that legendary screenwriter Paul Schrader, 79 ("Taxi Driver," "Raging Bull," "Last Temptation of Christ"), publicly refers to his AI companion using human pronouns in a new interview. Schrader describes the AI as "the most intellectually stimulating relationship I've had in decades," sparking a heated cultural debate about AI companionship among the elderly and the boundaries between tool and relationship.</div>
+    <div class="meta-row">
+      <span class="source-tag">📰 Christian Post</span>
+      <a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOc2NnSkJhaGpxWGFxT2tjRXdkTFNpR2RPdVZQcnNaVTRlRkRJVjhZWVFuYk9YdmhjLUdaczNTQldIV1dXLUN5dlpxZG1KTjlxWUwxR1F4SjJsSGxhbnN3LTJ1R01xeU5GUFRYbWVpTC1Ed2JQVlV4T3RoR1ZDU0U1NUVaOXZ4NzduR0c5d1E5NzJXODFGTC13" target="_blank" class="ext-link" onclick="event.stopPropagation()">📖 Read on Christian Post →</a>
+    </div>
+  </div></div>
+</div>
+</div>
+
+<div class="summary">📰 <strong>20 stories</strong> · 25+ sources · NYT · WSJ · WaPo · The Economist · TechCrunch · The Verge · WIRED · Ars Technica · Axios · Fast Company · Gizmodo<br>💡 <strong>Click any headline to expand</strong> · 🔗 External link available in each expanded view<br>⚡ Curated by <a href="https://lucium.io" style="color:var(--accent)">Lucien Studio</a></div>
+
+<script>
+// Keyboard navigation: pressing Enter/Space on a focused item toggles it
+document.querySelectorAll('.item').forEach(item => {
+  item.setAttribute('tabindex', '0');
+  item.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.classList.toggle('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
