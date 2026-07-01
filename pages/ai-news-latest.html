@@ -1,641 +1,472 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>美国 AI 新闻速递 · 2026-06-30</title>
-<meta name="description" content="Lucien Studio 每日 AI 新闻速递 · 美国版 · June 30, 2026">
-<style>
-  :root {
-    --bg: #0a0c10;
-    --bg-elev: #11141b;
-    --bg-card: #161a23;
-    --bg-card-hover: #1c2130;
-    --border: #232836;
-    --border-strong: #2e3445;
-    --text: #e6e8ee;
-    --text-dim: #9aa3b2;
-    --text-mute: #6b7280;
-    --accent: #7aa2f7;
-    --accent-2: #bb9af7;
-    --tier1: #4ade80;
-    --tier2: #60a5fa;
-    --tier3: #a78bfa;
-    --tier4: #fb923c;
-    --tier5: #f87171;
-    --warn-bg: #2a2410;
-    --warn-border: #b8860b;
-    --warn-text: #fbbf24;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
-
-  header.page-header { padding: 24px 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-dim); letter-spacing: 0.05em; text-transform: uppercase; }
-  .brand-dot { width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
-  h1 { margin: 12px 0 8px; font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(135deg, #fff, #c4b5fd); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .subtitle { color: var(--text-dim); font-size: 15px; margin: 0; }
-  .meta-row { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; font-size: 13px; color: var(--text-mute); }
-  .meta-row strong { color: var(--text); }
-
-  /* Credibility bar */
-  .credibility-bar { margin: 24px 0 8px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
-  .credibility-bar h3 { margin: 0 0 10px; font-size: 12px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
-  .tiers { display: flex; gap: 4px; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
-  .tiers > div { flex: 1; }
-  .tiers .t1 { background: var(--tier1); }
-  .tiers .t2 { background: var(--tier2); }
-  .tiers .t3 { background: var(--tier3); }
-  .tiers .t4 { background: var(--tier4); }
-  .tiers .t5 { background: var(--tier5); }
-  .tier-legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim); }
-  .tier-legend span::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; vertical-align: 1px; }
-  .tier-legend .l1::before { background: var(--tier1); }
-  .tier-legend .l2::before { background: var(--tier2); }
-  .tier-legend .l3::before { background: var(--tier3); }
-  .tier-legend .l4::before { background: var(--tier4); }
-  .tier-legend .l5::before { background: var(--tier5); }
-
-  /* Section */
-  .section { margin: 36px 0; }
-  .section-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
-  .section-title { display: flex; align-items: flex-start; gap: 12px; }
-  .section-emoji { font-size: 28px; line-height: 1; flex-shrink: 0; }
-  .section h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
-  .section-cn { margin: 4px 0 0; font-size: 13px; color: var(--text-dim); }
-  .section-sub { color: var(--text-mute); }
-  .section-count { font-size: 12px; color: var(--text-dim); background: var(--bg-card); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border); white-space: nowrap; }
-
-  .section-tier-1 h2 { color: var(--tier1); }
-  .section-tier-2 h2 { color: var(--tier2); }
-  .section-tier-3 h2 { color: var(--tier3); }
-  .section-tier-4 h2 { color: var(--tier4); }
-  .section-tier-5 h2 { color: var(--tier5); }
-
-  /* Rumor warning */
-  .rumor-warning { display: flex; gap: 12px; align-items: flex-start; background: var(--warn-bg); border: 1px solid var(--warn-border); border-left: 4px solid var(--warn-border); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 14px; color: #fde68a; }
-  .rumor-warning .warn-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
-  .rumor-warning strong { color: var(--warn-text); display: inline-block; margin-bottom: 2px; }
-  .rumor-warning span { color: #fde68a; font-size: 13px; line-height: 1.55; }
-
-  /* News items */
-  .news-list { display: flex; flex-direction: column; gap: 8px; }
-  .news-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.15s, background 0.15s; }
-  .news-item:hover { border-color: var(--border-strong); }
-  .news-item.is-open { background: var(--bg-card-hover); border-color: var(--border-strong); }
-  .news-head { width: 100%; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px; padding: 14px 16px; background: transparent; border: 0; color: inherit; cursor: pointer; text-align: left; font: inherit; }
-  .news-head:hover { background: rgba(255,255,255,0.02); }
-  .news-meta { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; font-size: 11px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
-  .source { color: var(--accent); font-weight: 600; }
-  .news-title { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.45; }
-  .expand-icon { color: var(--text-mute); font-size: 14px; transition: transform 0.18s; align-self: center; grid-row: 2; }
-  .news-item.is-open .expand-icon { transform: rotate(180deg); color: var(--accent); }
-
-  .news-body { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; padding: 0 16px; }
-  .news-item.is-open .news-body { max-height: 600px; padding: 0 16px 16px; border-top: 1px solid var(--border); }
-  .summary { margin: 12px 0 14px; font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-  .read-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent); background: rgba(122, 162, 247, 0.1); padding: 7px 14px; border-radius: 6px; border: 1px solid rgba(122, 162, 247, 0.25); transition: all 0.15s; }
-  .read-more:hover { background: rgba(122, 162, 247, 0.2); text-decoration: none; transform: translateY(-1px); }
-
-  /* Footer */
-  footer.page-footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-mute); font-size: 12px; text-align: center; line-height: 1.7; }
-  footer.page-footer a { color: var(--text-dim); }
-
-  @media (max-width: 540px) {
-    .container { padding: 20px 14px 60px; }
-    .news-title { font-size: 14px; }
-    .section-emoji { font-size: 22px; }
-    .section h2 { font-size: 17px; }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lucien Studio AI News Daily — 2026-07-01</title>
+  <meta name="description" content="Lucien Studio 每日美国 AI 新闻速递，按可信度分层，点击展开中文摘要。" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#080b12; --panel:#101623; --panel2:#141c2c; --text:#edf2ff; --muted:#9aa8bf;
+      --line:rgba(255,255,255,.10); --accent:#4cc9f0; --green:#80ed99; --purple:#b197fc;
+      --orange:#ffb86b; --red:#ff6b6b; --yellow:#ffd166;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top left,rgba(76,201,240,.18),transparent 32rem),radial-gradient(circle at top right,rgba(177,151,252,.14),transparent 30rem),var(--bg);color:var(--text);}
+    a{color:inherit}
+    .wrap{width:min(1160px,calc(100% - 32px));margin:0 auto;padding:36px 0 56px}
+    header{padding:30px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(16,22,35,.92),rgba(20,28,44,.70));box-shadow:0 24px 80px rgba(0,0,0,.35);}
+    .kicker{display:flex;gap:10px;align-items:center;color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+    h1{font-size:clamp(32px,6vw,64px);line-height:.98;margin:16px 0 14px;letter-spacing:-.05em}
+    .sub{font-size:17px;color:var(--muted);max-width:820px;line-height:1.7;margin:0}
+    .topline{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:9px 13px;color:#cbd5e1;font-size:13px}
+    .count{color:var(--green);font-weight:800}
+    .cred-bar{margin:20px 0 28px;padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.045);display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+    .cred-bar b{color:var(--text)}
+    .main{display:grid;gap:20px}
+    .section{border:1px solid color-mix(in srgb,var(--sec) 42%,transparent);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));overflow:hidden}
+    .section-title{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:22px 22px 14px;border-bottom:1px solid var(--line)}
+    .section-title>div{display:flex;align-items:center;gap:12px}
+    .icon{font-size:25px;filter:drop-shadow(0 0 12px color-mix(in srgb,var(--sec) 35%,transparent))}
+    h2{margin:0;font-size:23px;letter-spacing:-.02em}
+    .cred{color:var(--sec);font-size:12px;border:1px solid color-mix(in srgb,var(--sec) 45%,transparent);border-radius:999px;padding:6px 9px;white-space:nowrap;background:rgba(0,0,0,.15)}
+    .rumor-warning{margin:18px 20px 0;padding:14px 16px;border:1px solid rgba(255,209,102,.55);border-radius:16px;background:rgba(255,209,102,.12);color:#ffe7a3;line-height:1.6}
+    .items{padding:14px;display:grid;gap:12px}
+    .item{border:1px solid var(--line);background:rgba(8,11,18,.54);border-radius:18px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s,background .2s}
+    .item:hover,.item:focus{outline:none;border-color:color-mix(in srgb,var(--sec) 70%,white 10%);transform:translateY(-1px);background:rgba(255,255,255,.055)}
+    .item-head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px}
+    .n{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--sec) 18%,transparent);color:var(--sec);font-weight:900;border:1px solid color-mix(in srgb,var(--sec) 36%,transparent)}
+    h3{margin:0;font-size:17px;line-height:1.35;letter-spacing:-.01em}
+    .meta{margin:6px 0 0;color:var(--muted);font-size:13px;display:flex;gap:10px;flex-wrap:wrap}
+    .meta span+span:before{content:"• ";opacity:.55}
+    .chev{font-size:24px;color:var(--muted);transition:transform .25s}
+    .item-body{max-height:0;overflow:hidden;transition:max-height .38s ease;border-top:1px solid transparent}
+    .item.open .item-body{max-height:520px;border-top-color:var(--line)}
+    .item.open .chev{transform:rotate(180deg);color:var(--sec)}
+    .item-body p{margin:0;padding:16px 16px 4px 68px;color:#dbe5f5;line-height:1.75;font-size:15px}
+    .read{display:inline-flex;margin:12px 16px 18px 68px;padding:10px 13px;border-radius:12px;background:var(--sec);color:#061018;text-decoration:none;font-weight:800;font-size:14px}
+    .rumor .read{background:var(--yellow)}
+    footer{margin-top:28px;padding:20px;color:var(--muted);line-height:1.7;text-align:center}
+    @media (max-width:720px){.wrap{width:min(100% - 20px,1160px);padding-top:18px}header{padding:22px;border-radius:22px}.section-title{display:block}.cred{display:inline-flex;margin-top:10px;white-space:normal}.item-head{grid-template-columns:auto 1fr;gap:10px}.chev{grid-column:2;justify-self:end;margin-top:-34px}.item-body p,.read{margin-left:0;padding-left:16px}}
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="wrap">
+    <header>
+      <div class="kicker">Lucien Studio · AI News Daily</div>
+      <h1>美国 AI 新闻速递</h1>
+      <p class="sub">按可信度从高到低编排：政策监管 → 商业市场 → 技术深读 → 科技领袖与 KOL → 传闻与市场八卦。点击任意标题展开中文摘要；外部链接全部使用 Google News RSS 返回的 <code>link</code> 字段。</p>
+      <div class="topline">
+        <span class="pill">日期：2026-07-01</span>
+        <span class="pill count">共 23 条新闻</span>
+        <span class="pill">窗口：Google News RSS · US · 2 days</span>
+      </div>
+    </header>
 
-  <header class="page-header">
-    <div class="brand"><span class="brand-dot"></span> Lucien Studio · AI News Daily</div>
-    <h1>美国 AI 新闻速递</h1>
-    <p class="subtitle">June 30, 2026 · Tuesday · 来自 Google News 多角度抓取与人工编排</p>
-    <div class="meta-row">
-      <div><strong>26</strong> 条新闻</div>
-      <div><strong>5</strong> 个板块</div>
-      <div>覆盖时段：过去 48 小时</div>
+    <div class="cred-bar">
+      <b>可信度指示条：</b>
+      <span style="color:var(--accent)">● Policy</span>
+      <span style="color:var(--green)">● Business</span>
+      <span style="color:var(--purple)">● Tech Media</span>
+      <span style="color:var(--orange)">● KOLs</span>
+      <span style="color:var(--red)">● Rumors</span>
+      <span>（从上到下可信度递减）</span>
     </div>
-  </header>
 
-  <div class="credibility-bar">
-    <h3>可信度梯度</h3>
-    <div class="tiers">
-      <div class="t1"></div>
-      <div class="t2"></div>
-      <div class="t3"></div>
-      <div class="t4"></div>
-      <div class="t5"></div>
-    </div>
-    <div class="tier-legend">
-      <span class="l1">权威媒体 / 政府</span>
-      <span class="l2">财经主流</span>
-      <span class="l3">科技媒体</span>
-      <span class="l4">KOL 观点</span>
-      <span class="l5">传闻爆料</span>
-    </div>
+    <main class="main">
+      
+      <section class="section policy" style="--sec:#4cc9f0">
+        <div class="section-title">
+          <div><span class="icon">🏛️</span><h2>Policy &amp; Regulation</h2></div>
+          <span class="cred">Highest credibility / policy signal</span>
+        </div>
+        
+        <div class="items">
+          
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">01</span>
+              <div class="headline-wrap">
+                <h3>Voters of both parties want tighter AI regulation, poll finds</h3>
+                <p class="meta"><span>NBC News</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>NBC News 报道的民调显示，AI 监管已经不再只是党派议题：两党选民都希望看到更明确的安全、隐私与责任规则。对 2026 年下半年的美国 AI 政策来说，这意味着州级立法、联邦指导和企业自律之间的拉扯会继续升温。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNZEF3Q2VFVkpyWTJER1lHZjFJemVBMGhHZ002VkVicjNJSk9PSlpwM0lnbmVKMWpIdXVyOFoxaUFGelBDQmQzNjcxTTNKV29MNTU4Vm5GUUUwRHlvZzdyWjdzUDRDUy1CYnluMl9CaGRCU2xkT0k3N01HWm1VU0xFczlOVXVoX2o2QUZnNkdiTGNfV3NjdnFyeGJfNW9MSzJ5dHl1cnV6TWQ5ZGM?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">02</span>
+              <div class="headline-wrap">
+                <h3>U.S. approach to regulation of AI is problematic, Sixth Street&#x27;s Chavez says</h3>
+                <p class="meta"><span>Reuters</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Reuters 聚焦金融界对美国 AI 监管路径的担忧。Sixth Street 的高管认为，美国现在的监管方式仍偏碎片化，若缺乏清晰框架，既可能压制创新，也可能放大市场和数据风险。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPU0RrUklGNWpKSVVSck00QTNDR3AxdzJSUGJhWnhEOXBfcDJIUThNRS1VamhSOTdwLXZlR3BIb19uaVIxdHltcTFZdnpCUXdqSkJPajgtVzlHaHd1VXlFd1lXZDdkTTh2eGptT2QzTG0xcEdwNkdBTHUtWllMcEZ4cjJQWDZzRGZWTnVEcWdzOGNwSjVLdERtdGMyRXYwZHJ3ZnZpdlE5ZGpRLTNzSmxrdldhb1poRlhiSDhv?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">03</span>
+              <div class="headline-wrap">
+                <h3>Artificial intelligence becomes ripe target for taxes</h3>
+                <p class="meta"><span>Roll Call</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Roll Call 把 AI 放进财政与税收视角：随着数据中心、算力和自动化收益扩大，立法者开始把 AI 产业视为新的税基。未来围绕算力、电力使用、企业自动化收益的税收设计，可能成为监管之外的另一条政策主线。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOa2xpbnQ0WkNlaFJfUmtBbGN1SXJ5eHJZVXZieUhWR0JvaGZadjBMdzQ3VC1RVzA2QnZKTWZQSUdOZHIxOHZSUndJQ09vNDZxNXlTb29sNGdqaXVQRXZQaE5aZzdsMHVZdEdZMTBQTjE4dmFNTEVDanJpdkJrMXUxc01fc3M4dXVrdEg3ZllaRQ?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">04</span>
+              <div class="headline-wrap">
+                <h3>Anthropic Reaches Deal With Trump Administration to Restore Access to Fable AI Model</h3>
+                <p class="meta"><span>WSJ</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>WSJ 报道 Anthropic 与特朗普政府达成安排，恢复部分模型访问。这个事件显示，最先进模型的发布、出口与安全审查正在变成直接的政策谈判，而不只是企业产品节奏。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNZmVjU1BXaDgyaWRiOUh5LTB0NTBmWHN3SnptZG9WSThxYUZKLVp4cjRFNnZLNTRZYXBuMERKY3k4X0hrSWtxX2tmMFlTbkloMHRqX2ViaUdxQWNfaVk5cUpKbW5PM1dyTkU5OC1GbEw3LXh1eHhJRVlLeVlpeUdKQnBReDNCVlR4NEVPWFR6WDEtVGw1MFZUVmpxRnF4dzNySVJ3aTdycTBkRWQ3MzBQMDNvbUJPS0ljZVdR?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">05</span>
+              <div class="headline-wrap">
+                <h3>The Trump Administration Is Lifting Its Export Controls on Anthropic’s Mythos and Fable AI Models</h3>
+                <p class="meta"><span>WIRED</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>WIRED 跟进 Anthropic Mythos 与 Fable 模型出口限制解除。该新闻的核心不只是单家公司恢复发布，而是美国政府如何在国家安全、盟友访问和 AI 产业竞争力之间重新划线。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNc2tfY2NzOXNpN1BkYjA0SHQ5SWFDNDFlb2c0RjVNSUxHN3EyY25XclQ4UGttOFRBNlRKRmI3S05SbHJEUVVCbnpmYlBCdm9vdG1UTDhnbHpYQVY4TTE5Tk5vVE1CeVM0dkpfVEs1aVR3YmhHUHBVVldzMjhIelFqa3NPZmNTRFFFM0F0ZnlhWXBwRHJ5TFNmbl9XeUpqWEM4TTRPa2pJTm5NN1BlQklyX2lB?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section business" style="--sec:#80ed99">
+        <div class="section-title">
+          <div><span class="icon">💰</span><h2>Business &amp; Markets</h2></div>
+          <span class="cred">High credibility / capital &amp; market impact</span>
+        </div>
+        
+        <div class="items">
+          
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">06</span>
+              <div class="headline-wrap">
+                <h3>AWS puts $1 billion into new AI unit to embed engineers with customers, joining growing wave</h3>
+                <p class="meta"><span>CNBC</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>CNBC 报道 AWS 投入 10 亿美元建立新的 AI 单元，把工程师嵌入客户团队。云厂商正在从“卖 API/算力”转向“卖落地能力”，争夺企业 AI 项目的预算入口。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQY1NpVEZHSVJDZDFHOUhUcDdjSUc4OHlxcDQtX1pfSldrWmhEc29fVUZ6ODNDSWVKX09NUExhWU1COXZiOW5FSl9XNEdhRzgtLV9YeXRVdDNEM3lGaVhfeEw3NU5rUGtJQnljcklNZTItMUV0Y2tiVzBlREJqaGZhVFpRTdIBiAFBVV95cUxQZ0hZdGx1di02TVNIdFNSZ1JVb09WTzBTbUhkekhRLVJhTWN3UXF6bW51RXVEY0tkTXBTNC1jcE1tZzNGRmRpVy1wVDF0Y0tnVy15NmVzeVBuRmV6Wm93NTRqdmtoejh6MWpLZTFGeHQ2ZDZuUGFtYWRkUkJOUElZMHNpbzk4SGdK?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">07</span>
+              <div class="headline-wrap">
+                <h3>Samsung, SK Hynix mega South Korea chips gamble tests optimism of AI cycle</h3>
+                <p class="meta"><span>Reuters</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Reuters 关注三星与 SK Hynix 对 AI 芯片周期的巨额押注。存储与高带宽内存仍是 AI 基础设施的关键瓶颈，但行业扩产也会考验市场对长期 AI 需求的信心。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQMk1zekxDdlhicFlKSXppbTBDQk9TaTFwX04wUnNiWFVsWm45aUQ2ckt4R2Nhbm12NFViN2FDa2t3anBJOXZ0QTdqUnBkelNqSVpTaXdPYnlyYkVMQldEVENpVU16dUt6eGZSLXlXY0g1b3hlZXBTeUlHTno2MGoxQnp6M3hiXzJKdnRMNEJxbzljN25MVDhkUTdtYWdOMDhnWE1mOE02cURBeDJRUTdaNGlVeEh3MWZzVnZmMWN6ZTFqSG9FWVpKN1gyRlU1OWRBZzlpMDBVTmtGSnY1LVE?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">08</span>
+              <div class="headline-wrap">
+                <h3>Nvidia competitor Etched hits $5B valuation, $1B in sales for AI chip</h3>
+                <p class="meta"><span>TechCrunch</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>TechCrunch 报道 AI 芯片公司 Etched 达到 50 亿美元估值，并声称获得 10 亿美元销售额。资本继续押注专用推理芯片，希望在 Nvidia 生态之外找到更低成本、更高效率的垂直突破口。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOc3hSWElqZnFjZUdYS1VaUVBJdjA0X2hNeGc2TndkaXJUVktaZWdPeXdiX0Y1eHFBOFZ0akZTZEZTcEZqaTlTR3pVRERvNHhET1N4U2hISGRIU3VaLWxBS0VXYmhjckZwVUFqNm5ZRHhKYXdPZkxhX2N6Ujh6T2dGOHBPX2ZzVXU4TV9aWUJ0VWZ4eVFFalRXVVdmYjgzSmI2cXNj?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">09</span>
+              <div class="headline-wrap">
+                <h3>Anthropic launches AI drug discovery program, joining tech giants in betting on healthcare</h3>
+                <p class="meta"><span>CNBC</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>CNBC 报道 Anthropic 推出 AI 药物发现项目。大模型公司正在向医疗与科研工作流延伸，试图把通用模型能力转化为高价值、可付费的行业产品。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNck84aEo5SERWUzlnMzBaY3ZYdnhRZ3gtMkgtSmlUS3gtamhsRUR5ZkNwbEtCUk5BOEkwY1NvMmpSVDlfLTc5WWg0c0xqX1lLR3ZRMV9qSmQ3bnFlWlBUQU16N1pTWGVwZXpjekVUV2JKc3lUbGxPdXNGZXJTLVRMV1UtZ0xEQ0pSM2c5XzB0N2s1RWdJcmlHc3NaaGvSAaIBQVVfeXFMT0lDWjZWV1hWcWs4YXNsWERycW1sM2p4dkFaMERBcm1Jd1BmbjhaeXdyMnlBYzF2Z00yVVNLeHJvLWxSTzlBSGFVYWlNRmxndkczM2FqdjM3YVJ4azlUd2xyU2ItR1ExTDc2WVVmT0pRWWd2eUdvcHRHdnJ2SFdXaDFZVDZ5MEdpLXpycVpXYzRvMW1lZUQzdGQ0cWxha0dmcWln?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">10</span>
+              <div class="headline-wrap">
+                <h3>Debt and Risky Bets Fuel South Korea and Taiwan&#x27;s AI Stock Boom</h3>
+                <p class="meta"><span>Bloomberg.com</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Bloomberg 把亚洲 AI 股票热潮与债务、风险偏好联系起来。AI 交易仍在扩散到芯片供应链和区域市场，但估值、融资成本与周期错配正在成为投资人需要重新定价的风险。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxPUzhkZ1lnOTJ5QlZrMU1XTTMyNlRJeDR4Rk5ZZDUwR1I2dUVXMjFnNnZKMC1YNFJtaWVuUWlVSGtoVm9sbzFKVDJINVVhWEdzN3M1RlpxaFpKYzNzMkdtczlJY1lwZWpNcTRPN0ZPWUhyLU1KRFpRU2JJQml0eEt0SVBRZl9GMGZPRXhYeUZOZ2hiUlp0TDVHVmpRNEhXcXA0SXpKc3poR29fYlZnM2UxamFGa0NuX2R1YlpKS1dtQW1zZ05FTGJ3WE5wdkhSanEx?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section tech" style="--sec:#b197fc">
+        <div class="section-title">
+          <div><span class="icon">🔬</span><h2>Tech Media Deep Dives</h2></div>
+          <span class="cred">High credibility / product &amp; technical analysis</span>
+        </div>
+        
+        <div class="items">
+          
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">11</span>
+              <div class="headline-wrap">
+                <h3>New attack provides one more reason why AI browsers are a bad idea</h3>
+                <p class="meta"><span>Ars Technica</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Ars Technica 报道新的攻击方式，再次暴露 AI 浏览器和代理式浏览的安全问题。浏览器一旦能替用户读网页、执行动作和处理敏感数据，提示注入与跨站数据泄露的风险会被明显放大。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPVC1nYm92NTlWcnphRDdPTzVpTmRNR0EzSURiWGpGTDhROVl3NVFKUEtGVFFkUEdiSVl0eGh6cVFZd25qRmNkTnRuTXdHNDhPTGprYUdiSjhJR3hIeXUxYlN6clRERlExUVNYdzRXdG5XY2RGc183dm5lb2Vlak1IdGgwa0J5bDVfQUlhYTF2TkNpRUJxOGtJSGY5akFfT1RfQnFfaDl0RFJSWmJGeUlmSHJLMEhhVDdBTHNz?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">12</span>
+              <div class="headline-wrap">
+                <h3>Anthropic launches Claude Sonnet 5 as a cheaper way to run agents</h3>
+                <p class="meta"><span>TechCrunch</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>TechCrunch 报道 Anthropic 发布 Claude Sonnet 5，并强调其更适合低成本运行代理任务。模型竞争正在从“最大参数/最高分数”转向“单位成本下的持续执行能力”。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPYlk5UjUzQ3hOVkZIcHQ3cWNBY29hU1J4Zm1qcHlPckZvRTZWbzRhLXFaRDdnZkVXZm43SHFoX3BqeVFvaTluSm42eXRkWFpNSjczV3k2R2tYZFJLT2VnUkw0WVdueUhXblJWTDJneG5jcHpFLVRLSlFJZExQUG5CLURiWWNlUFZNdmNSOFdXWklXcTZiVDBXZ24ydGhCS25JREE?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">13</span>
+              <div class="headline-wrap">
+                <h3>Anthropic’s Claude Science bets on workflow, not a new model, to win over scientists</h3>
+                <p class="meta"><span>TechCrunch</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>TechCrunch 关注 Claude Science 的产品策略：不是单纯推出新模型，而是围绕科研流程设计工具。AI 公司正在把模型包装成面向特定职业的工作台，以提升留存和付费意愿。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxNTWFMLUFicUpQcmdVbGVZS1VmekY5c3Bmc0pFQmxtX01mRnd0aFNmNTVkUm45R1FWMy1HWFlfOEU3TWpsZEZDeUZiOUs1QXNFRE1jQ2ktRTgzT2p1dU1hbkM5WWhZVXlRckVhaUU4Y0huZ19nLWctVVEzVW0weDdWRU45dlAtTjVFSFdIcW55YXVWa0dGS3dLY3diUDJsV19QdVZQLUluWWFwNkZWX0pVc2VBWWlwbU0?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">14</span>
+              <div class="headline-wrap">
+                <h3>Google’s new Nano Banana 2 Lite image model is its fastest and cheapest yet</h3>
+                <p class="meta"><span>Ars Technica</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Ars Technica 报道 Google 推出更快、更便宜的 Nano Banana 2 Lite 图像模型。图像生成价格继续下探，会直接改变 AI 图片应用、广告素材和创意工具的成本结构。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPM1VBREdnanJQX3JHbm5fYWpXam9QTjlhNVFfOUZjWmg3NE1xNi15ZS14eUF1NVF0LXBaUE9pZEFJa2x5b0d2SEJyNXB0Vkhta05WMzBXM1JicU9zbW95aTdTY2ZPVmQ3UUlBZTAtcTNPRVl3bkJud2NLdEpzbHlHTFZFNW9XdWNYTVpaZDlmMEg1eFkzYlNmR181Njd3Mzlhb3VMbWdkNFA0bDVLaDRF?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">15</span>
+              <div class="headline-wrap">
+                <h3>Vibe-coding platform Base44 launches own model as AI startups seek defensibility</h3>
+                <p class="meta"><span>TechCrunch</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>TechCrunch 报道 vibe-coding 平台 Base44 推出自有模型。越来越多 AI 应用公司意识到，仅靠套壳通用模型难以形成护城河，因此开始把模型、数据和工作流整合成自有能力。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQbWIyUmRxS2RJbFhCcHZGUGFpRXBJVTlwTFZ6N3hGSlBuYlVkOW5IbmVMeGI5MVR4a04weVkxTUZNZzRNX0czakhRcjFha2hIR1o3QkozMmxqSlZnY0tUVkZmNEVCSVlZZjNuMjZPYWtQakpXS3oxeElPLV9JTzJ0ZUlmVFA4SzV3MVJKRWQyNjlfb3RvemRGZ3doc25SMUdiTlFFYjRpV1ZleDd3ZTNmY0owbTFFQQ?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section leaders" style="--sec:#ffb86b">
+        <div class="section-title">
+          <div><span class="icon">🎙️</span><h2>Tech Leaders &amp; KOLs</h2></div>
+          <span class="cred">Medium credibility / leadership signals &amp; narratives</span>
+        </div>
+        
+        <div class="items">
+          
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">16</span>
+              <div class="headline-wrap">
+                <h3>How Grindr’s C.E.O. Adopted A.I.: ‘I Just Imposed It’</h3>
+                <p class="meta"><span>The New York Times</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>NYT 采访 Grindr CEO 如何在公司内部推进 AI。这个案例展示了企业 AI 落地常见的管理路径：不是等待自下而上的自然采用，而是由高层强制把工具纳入日常流程。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPc2h3NGFqTEN4U21VQm12VXRsaWJLaGJadGpVem1nSUw2VWtWTWxzYTJWV0Fnd3h3YkVZeWpCRHVHczlsSEhhUjI3aUtfdXduVEk0YjFGREIzTThtQkdmNlYxc0dzZUI2RTRobF91Mnl4UUIwcVJDZG9LV2hUSW12MXhn?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">17</span>
+              <div class="headline-wrap">
+                <h3>Elon Musk’s massive AI data center sparks fight over who can enforce clean air laws</h3>
+                <p class="meta"><span>Los Angeles Times</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Los Angeles Times 报道 Elon Musk 相关 AI 数据中心引发清洁空气执法争议。AI 基础设施的社会成本正在从“电力是否够用”扩展到排放、地方监管权和社区治理。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOTHY5UWc0TFZuQ3pESVBCa1JiZXNGZWNvN1o3dnpvVkpYV2p6MU9RbjJ3dC1yNTlpM1lsbmtTNXN4MFZzVUc5eE9KM0t5NlNQQUJQLU9lWnREeF83M2VaaWphcjRlYW82dU1SanItemJ2b21ET1d5MWMzRU1VdUJYcnRoS3pPNTRrN21tX0ItcWc4RmloWHk0bGhWdlZUR0dnM1RDRGpjUTlUTHFUNXhnOWl2bjg2UncwSHZtMVdEZzlIZlZfMEFrbERkczE?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">18</span>
+              <div class="headline-wrap">
+                <h3>SoftBank CEO questions Elon Musk&#x27;s vision of AI data centers in space: &#x27;What&#x27;s the point?&#x27;</h3>
+                <p class="meta"><span>AOL.com</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>AOL 转述 SoftBank CEO 对 Musk “太空 AI 数据中心”构想的质疑。这类公开交锋反映了 AI 基建叙事的分化：一边是超大规模、超长期愿景，另一边是对成本、物理约束和商业必要性的追问。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOQXJIaFdDbHVPTFMtTHZCbTZZcGlQd21yX3p2TXVBZHJZYkt6RjdzX3diaWgyUWV2WVZDdk5JMjdKV21Gcl9GMVU2c2JDYzlmd2dBX3ZqM0dWSmlWQzdWQ1lscDU1X1FPQWdKWjJpd1ozLVV0TFdSZlRjUzBHd0lqZk4tZw?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">19</span>
+              <div class="headline-wrap">
+                <h3>&#x27;Artificial&#x27;: Neon Acquires Luca Guadagnino&#x27;s Sam Altman Open AI Movie</h3>
+                <p class="meta"><span>Deadline</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Deadline 报道 Sam Altman/OpenAI 题材电影《Artificial》的发行进展。AI 公司和创始人已经成为大众文化素材，影视化叙事会进一步影响公众对 OpenAI 权力、治理和硅谷神话的理解。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNTE9rRXB5TjdlekJ1c3p4QkhyQVVOYm4zVFdaZFI4bjE5c2VJZW8xR2tuX3dyMFFpUl9ZNVhpdEJKWUVuNFFmODZlTFZMSmp3cWNXSHhKTEZVdGRnT3RkMkM4TW91RGdGaXdEWnpTOU5nX1NUMGdWYVU3czZJZGMxTWJUTGlad2g5TjNNMzAzOTcycVpfMmZNbTdsRQ?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section rumors" style="--sec:#ff6b6b">
+        <div class="section-title">
+          <div><span class="icon">🫧</span><h2>Rumors &amp; Gossip</h2></div>
+          <span class="cred">Low credibility / market chatter &amp; unverified narratives</span>
+        </div>
+        
+        <div class="rumor-warning">⚠️ Rumors/Gossip 板块包含市场传言、二级传播、娱乐化叙事或尚待主流媒体确认的信息。请只把它们当作风险雷达，不要当作确定事实。</div>
+        <div class="items">
+          
+          <article class="item rumor" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">20</span>
+              <div class="headline-wrap">
+                <h3>AI News: Anthropic ‘Mythos’ Leak, BlackRock Comments, &amp; Top AI Tokens</h3>
+                <p class="meta"><span>CoinMarketCap</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>CoinMarketCap 把 Anthropic “Mythos”泄露、BlackRock 评论和 AI 代币行情放在一起讨论。该类信息混合了市场叙事、二级传播和加密资产情绪，适合作为风向观察，但不应当作已验证事实。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPQ0c0RTJ3QUFuUDJEU3F3Z1ZXVWJPamkxU3p4Uk05SEFFWFVHZXpLcG1jaGpJUjQzRWI5NkRQTy1zdVRfWGxpcEdlQmxwSllxOU1STnBoSmFPVFJuNkxZMml4Vnp4UWdQVlJOelV5bDdKSmN1bUFDcUFzQk1YSTBCbXVRYVJZV0NhYm04ckdVNUhpemZabGVReTROT3ZTWTZXSVY5cEpybWdBVUQt?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item rumor" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">21</span>
+              <div class="headline-wrap">
+                <h3>Meta Stock Faces New AI Challenge as Google Limits Gemini Access</h3>
+                <p class="meta"><span>Yahoo Finance</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Yahoo Finance 报道 Meta 股票面临来自 Google Gemini 访问限制的新挑战。标题指向平台竞争和市场解读，但具体影响仍需等待公司披露或更权威的后续报道确认。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPNzBXd0dOaFBDTUtmTW1WWEpVNDVDU1psVms5a0s0Ukt5NFdjWGZkbEE0S19HeTd1MnZ1OEpWMjJEMHFzTUdQYTVSdVc5TjRabGdwX2VDWkgyN19TT3lia2tvb2dIS2x5VkJqOXNZZzNFaER4bEhEcWNadmhmZW5pTUtiR2ZpanJmbEFWZTZkUHJ6ekZXa0NiWQ?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item rumor" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">22</span>
+              <div class="headline-wrap">
+                <h3>AI stocks are in an ‘air pocket’, Meta and Microsoft traded like ‘bear market names</h3>
+                <p class="meta"><span>Fortune</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Fortune 描述 AI 股票进入“air pocket”的市场情绪。此类说法更多反映交易员和分析师对短期价格的解释，适合跟踪风险偏好变化，但不能直接等同于产业基本面逆转。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNdGlnVHkyamtnQ1JjWnpIeHJSX0ZJS3QtTlFDYjNKdnZfOVl2VW9NeWNSYVJvOEJ1SGRVZHZQbHpIanE3M3dPRVc4QVJUQ182ZWFTb2Jpa2RYbG9hckNhRTV1Q1UzRVpmSnc1MmttTXlaRjRMWHV4MlczLVVya3ljS1VqMXRWY25LaFBibkkwYTE?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+          <article class="item rumor" tabindex="0" role="button" aria-expanded="false">
+            <div class="item-head">
+              <span class="n">23</span>
+              <div class="headline-wrap">
+                <h3>OpenAI voluntarily limits new AI models at government’s request</h3>
+                <p class="meta"><span>Cybersecurity Dive</span><span>Google News RSS</span></p>
+              </div>
+              <span class="chev">⌄</span>
+            </div>
+            <div class="item-body">
+              <p>Cybersecurity Dive 报道 OpenAI 在政府请求下自愿限制新模型。由于该故事与监管、安全审查和企业自我约束交织，仍需结合 OpenAI、政府部门及主流媒体后续确认来判断其真实范围。</p>
+              <a class="read" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPS0JUSUJ5VFNpMFN4YXNTWlBrYUx0Y3dMVG9rdXpTYmpFUzhGT1JWOXNLaU04SkoxNkJwcXJWeDloTFpFT2drMEUwN0plbFN1RzZraWRWMlRrX2Y3Rk1XOGRTMTl4cXBHUGZaaUVXdWw1QzJJai1IZU15UXlYSF9kUHc4cnhMNU1VQWtTUw?oc=5" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read via Google News RSS →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>归档日期：2026-07-01 · 生成时间：2026-07-01 09:00 US News Window · 共 23 条。所有外链均为 Google News RSS 原始 link 字段，未手工编造 URL。</p>
+    </footer>
   </div>
-
-
-    <section class="section section-tier-1" id="section-policy">
-      <header class="section-header">
-        <div class="section-title">
-          <span class="section-emoji">🏛️</span>
-          <div>
-            <h2>Policy & Regulation</h2>
-            <p class="section-cn">政策与监管 · <span class="section-sub">高可信度 · 主流权威媒体与政府公告</span></p>
-          </div>
-        </div>
-        <span class="section-count">5 条</span>
-      </header>
-      
-      <div class="news-list">
-        <article class="news-item" data-id="policy-0">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Foley Hoag</span>
-            </div>
-            <div class="news-title">Trump’s New AI Frontier: The Executive Order Regulating Frontier AI Models</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">白宫签署新行政令，要求前沿 AI 模型在部署前完成红队测试与备案，并由商务部牵头建立模型注册数据库。该令重塑了去年放松的监管框架。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxPN1ltLW5IdDBHR1RIRG5KckR6MzU3bFdtWnFRNXJVX01YQnUxWEtQUW1SMThPbXhJakVjdWpQUHJDbGQxQmNkYkVwME9UdXNHbHJiaUx3dHNDeERYN1l4MTV0Y29CSXZpRHJKMVE2eDBEcVlKd0xHN1RJV0ZoVEtoS19LUlAwblUyZ3pFWEZGOEQ5N0tCcU1hX2JCbGpibXMyQVRpdGtwOXVMSk1CRXN1V0d5dTZ1eFZtbjVSVFRsT1VQakduc3VGNzVYOGlDVHkweUx4Z3hFVjRmR2I4dVFTRVBKOUFfRWJoREw5SnBKZFk?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="policy-1">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">The Hill</span>
-            </div>
-            <div class="news-title">Poll finds bipartisan support for tighter AI regulation</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">最新民调显示，无论党派归属，超过 72% 的美国选民支持对 AI 实施更严格的联邦监管，包括强制信息披露和深度伪造标签。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPWk5NVHlWYkYzVDFIelgtSFRlR1FsQ2JxQlY0Z0Fyd1A2YXhaM1lrVTFVMURYNzBzTDR4Q1FHT3IxcmNfUEp6YjNhLUVGanE4a3lYUkM3anFSdHRURVlzY1prU1ZkbHBoTVR3RDRxRzF3eUFKdGdUZEJhVE13V0hXOW9xZVJMQdIBiwFBVV95cUxPNjVtQ0hVQWVkY1E4OFQ4TF9BV251eXVuT042VUhJQ3BOQUo2Uzg1MURFTTJqckNMRkxwMDFsVUFFWTI3YXdsYWo0UW9wZHRSRy0ySlpYenVieGhXQUF2RVJnQnJjaFJ2ekV2cF9sSWZRdFFNU0JLQjVjWWk0ZXNlOTJfR2NYbXRXNkFJ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="policy-2">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Roll Call</span>
-            </div>
-            <div class="news-title">Artificial intelligence becomes ripe target for taxes</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">国会两院多位议员开始研究将 AI 算力与企业 AI 收入作为新税基。提案包括对超大规模 GPU 集群征收&quot;数字基础设施税&quot;。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxOa2xpbnQ0WkNlaFJfUmtBbGN1SXJ5eHJZVXZieUhWR0JvaGZadjBMdzQ3VC1RVzA2QnZKTWZQSUdOZHIxOHZSUndJQ09vNDZxNXlTb29sNGdqaXVQRXZQaE5aZzdsMHVZdEdZMTBQTjE4dmFNTEVDanJpdkJrMXUxc01fc3M4dXVrdEg3ZllaRQ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="policy-3">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">The 74</span>
-            </div>
-            <div class="news-title">NYC Delays School AI Guidance After Backlash</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">纽约市教育局原定本周发布的 K-12 AI 课程指南，因教师工会与家长团体强烈反对而无限期推迟。争议焦点是学生数据训练问题。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQczNDblhpU0o3ZGpCOHJUVzNIam15TXNZMGpWNU1rX0N1TjJ4VUVEeVR4OEJsRjJCeGo0SV9xVmNJM2VYekFsNk56bjdFTlZDcVNqQ2tqcXBYcnI5YkJHRVZ2Q1hrcWVvOHdnaFQ1bF84ZjhWTjV0enlBRUh6MHZSUUVmbjh4WmxLUEE?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="policy-4">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">PubAffairs Bruxelles</span>
-            </div>
-            <div class="news-title">Artificial Intelligence: Council gives final green light to simplify and streamline rules</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">欧盟理事会正式批准 Omnibus VII，简化 AI 法案合规流程，初创企业的报告负担将减少约 40%。新规将于 2027 年初分阶段生效。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxONmwyVk83Ym9BRVVPRGZnQVZlS0R1QVc0QWNCLVQ5S2IxTDc2RHVySEJKRHdSUFo1Y3g0RTdMOHMzODI1YVU2U3RoUXNoTWc5c3lVbklJQ2xsWHIwcW9IZzNLVURJc3p5X1NCNU1pVUJzalZDVTFBMU9WQ1Vycmw4LUMwZGdYRjJrUFhvRk1MNU5TSW5LM3c0V28wV0w1M05SY2lHNTM0Qk1pX0MyanhSTVJhalBQVURXQmlLNWFtdEp3ZU9KNzFsVldHYlZqMmdybHg3dnozV0hheVF2?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-tier-2" id="section-business">
-      <header class="section-header">
-        <div class="section-title">
-          <span class="section-emoji">💰</span>
-          <div>
-            <h2>Business & Markets</h2>
-            <p class="section-cn">商业与市场 · <span class="section-sub">高可信度 · 财经主流媒体</span></p>
-          </div>
-        </div>
-        <span class="section-count">6 条</span>
-      </header>
-      
-      <div class="news-list">
-        <article class="news-item" data-id="business-0">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Fortune</span>
-            </div>
-            <div class="news-title">The central bank of central banks sees a $1 trillion AI investment boom headed for a reckoning</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">国际清算银行（BIS）警告，全球 1 万亿美元的 AI 资本支出正酝酿&quot;重大经济风险&quot;，债务杠杆和电力短缺是两大隐患。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQX3VpVEJMSjNPMGpoalFYMmRZclpQcEJvRkNONlM3NHJkRTVXSUR1QzUzVjRzUXBRY01PVXpSN3c2VzdkcDI3ci1NV3E4bDcxbVBzcnlYMC05VUJ3UWNqRkVuM0xEdjlodmZXSTFhalM2anU0SDJxMzlDamJRamV2eDJnbk5XQlJMc2h5bi16UVNNUEoxQ1pNdlM3amZqX1RWdnFPWUJjUDZZXzcw?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="business-1">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">CNN</span>
-            </div>
-            <div class="news-title">South Korea to invest $576 billion in AI chip production with Samsung and SK Hynix</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">韩国宣布 5760 亿美元 AI 与芯片投资计划，三星与 SK 海力士牵头，目标到 2030 年将本土 HBM 产能翻三倍。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOM0FrTWJtTkp3dHdQSUhIRVJPMWJ0OTZXVGdfMmhlTVBPOXRXbldMaE41R0tlTWpvNlJLZ0Vta2tLa2ZhZDdRbFp1WktQVVNJbl91WmJ5QmQ0S2xzWE1oMVVCY2dEcF9jVTJCZ2pXYmFWcy1sRDZjRklLbGxDcWJ4QTlCbkVCM2hl?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="business-2">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">SiliconANGLE</span>
-            </div>
-            <div class="news-title">AI software development startup 8090 nabs $135M funding round</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">AI 软件开发初创公司 8090 完成 1.35 亿美元融资，估值 12 亿美元，主打企业级&quot;AI 工程师&quot;代理，已签约多家《财富》500 强。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMingFBVV95cUxPMDh0Y3RzSUVLNVF3bU5aSEx1cEJOWGMyel9Rd29fU09BODNESEs4THNTZXZFWmJjMTVhak1VYW5oaWx0NThZX1ZlSC1aX19rajVoT2Jib2x4N0kzTXowSmNha2JVWDhZSWxDVHhldHBES2tIdWtrc29iQWZseGFrTjNIUFdHM3BDaVBFNDB6WEo4UGZDNkc0b1lXaHZXQQ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="business-3">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">TechCrunch</span>
-            </div>
-            <div class="news-title">Arena, the AI leaderboard everyone uses, is now a $100M business</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">AI 模型评测榜 Chatbot Arena（lmsys.org 衍生）正式商业化，企业版年订阅 9.9 万美元起，已成为价值 1 亿美元的 ARR 业务。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPUzlocnZtcW16aHY5eFphNkN4c0pWVklsTC1KWDVnTDUtZ1YyWWZTNHlZQXExYmt3TDZQRG9MNjB3Ykw4VzA3QW9hUEJUT0IyUmhqWFdzbkNXTXFuTkd4NUs3Wm5raVFkZWFwbDZ6N1E3MmVRS0xvX2UyU0JQNDdacGZTd0UzVGVVd09XejA4SjZ3Nm1rNWlGRm9BeXk?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="business-4">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">StateScoop</span>
-            </div>
-            <div class="news-title">California agencies get access to Anthropic’s AI tools at half price</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">加州与 Anthropic 签订协议，Claude 企业版以半价（约每年 1500 万美元）提供给所有州政府机构，覆盖 22 万名公务员。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxObUdWbk8wZzZQTDVfcnhPTi1XZDVpbGcxaEtzVUF1Q05NcmlzUHkzSnc3N2FoZnFfLWZlbkR1eG9RRnlkOFU3OHNVM0lORHBwUGlkOWlsdHJleDBxUmwzVUZsUWJCeGVCeUJRdVZZM0tfREdYbTRQOHcxSHJWemhLa3lyZmJuTi1PRDNWWjMzdHpWdEUzcGc?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="business-5">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Accenture</span>
-            </div>
-            <div class="news-title">ServiceNow and Accenture Launch AI-powered Services to Accelerate the Shift from Legacy Risk Platforms to Agentic AI</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">ServiceNow 与埃森哲联合推出企业 AI 风险管理服务，目标是替换传统 GRC 工具栈，首批客户来自金融与保险行业。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxOTURQV1JObWtwUEMyM01SV0F4LWcySzd1MUJaOWpiLU9FVWd1eFlGNTNOeHY0OThPSmRlMzVvZEFlSVRZaUg0OW4zOWhGRGNsdEJNYlUydFRCeG43U25YbnQyMFhMNmNmVFJRNU0zbTgzUzlOUzRYZVNsd19ReWhUY0hfM2NfSktMVWdYUXphX2swcVFPVERwUi1HVlFsUUtfZHllMGFEMWVYRV9sNHpsRG1KcGc4LVlWa3lhRElTLTQ0S2U1UmU1ZmJQS2cyRkFFTFY0bGg2amhNaEtRZFJDLW01cFJQSmJhNFQ2R1NR?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-tier-3" id="section-tech">
-      <header class="section-header">
-        <div class="section-title">
-          <span class="section-emoji">🔬</span>
-          <div>
-            <h2>Tech Media Deep Dives</h2>
-            <p class="section-cn">科技媒体深度报道 · <span class="section-sub">中高可信度 · 一线科技媒体</span></p>
-          </div>
-        </div>
-        <span class="section-count">6 条</span>
-      </header>
-      
-      <div class="news-list">
-        <article class="news-item" data-id="tech-0">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">The Washington Post</span>
-            </div>
-            <div class="news-title">Are ChatGPT and other AI chatbots politically biased? We tested them.</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">《华盛顿邮报》对 ChatGPT、Gemini、Claude、Grok 进行政治偏见测试。结果显示主流模型在经济议题上略偏右、社会议题上略偏左，Grok 偏差最大。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNcjNMZk5ZYVBRRHlTbDJrZl85THhCTHJvczVHMzlPcnpUdndRdkV1NGZoNFdvMzNBLVdZaHZpS0tEY1dfWFBYTWtKUXpnQzhFa09vMXBHYmNuOEV3TmJuRWVXeTFvQW1adlNBRDg2R0NBUEhQLXlwdWZHVHNLRUVXYjdRUk9FTjFXSDRGenUyZkZxMkdZelk4OWF5VGI4S2Q4U3lyQUpEWEROTFJLUlM3alNwaEQtV1FveVU4bjV1dW1SM3ZvenFZ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="tech-1">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">WIRED</span>
-            </div>
-            <div class="news-title">Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex, and Drugs</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">WIRED 调查曝光：Meta 承包商假扮青少年向竞品聊天机器人（Character.AI、Replika）询问自杀、毒品和性话题，目的是采集&quot;竞品安全失败案例&quot;作为训练数据。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxONFV0SUVzcE5ZR3E3UFluWkhEc0U0TDJIaXh1V0EyMS12TG9IVmR0WmRvUk14Umw1Tlp3VldsM3FnSFhiX25CQmE5ZFNOeDd6ckdlX2tsSERGLVdmaFFma0JiSzFyd1Z4VjdkQVc2STJNc1FwYjVzcDZ0RGxHWll0RlZmOV95NWxGeUwtRA?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="tech-2">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">CNET</span>
-            </div>
-            <div class="news-title">Chrome Has Been Secretly Downloading AI to Your Computer. Here&#x27;s What You Can Do</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">CNET 发现 Chrome 在后台自动下载本地 AI 模型（约 3GB）用于&quot;Help me write&quot;等功能，未明显告知用户，CNET 提供了关闭路径。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNOUFCaUVUWXV0TDk2Z1VBS1ZVVkgzNHBEbFNCbERTbDN1VWRaU25MREZfR3N3Zmh0aHB6YW9QV3FBNWpxR2ljRngtdHh4eHphWUd0V1BVME5KNWpFdDVEMTFHa1JSRU82UUZUcXZfZnVuYjdBSnhNNjVLN3J1OFhiMjlYZmhfcFNYb0YwREpza3B6YTllNnktb01yb2pSYktDbkRnM1dVS2Q4Z2NrOWg4SWJfLVNFblA1UDZMR2lLRGpsSG1RbGhXUw?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="tech-3">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">blog.google</span>
-            </div>
-            <div class="news-title">Interactions API: our primary interface for Gemini models and agents</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">Google 发布 Interactions API，作为 Gemini 模型和代理的统一接口，支持流式工具调用、多模态输入与代理&quot;会话记忆&quot;，取代旧版 GenerateContent。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxObk5aTGR6dzNhLXZBWEpOY3Q2bHBDNk92amdBSXVmS1B6aVB3akFfd1VadWxUQk50bHl6Y2ZwNkdTaFNjclc1cmhDcjk2UG14VUZhM1MtaG42TUJEakZqZWkxelpGdS1YUEJGMkhBWUpPWjlLRnhHMHpXRUZRQnZDU19SdU51QnZmYURMejFtZ2lKWERCUks3OHNnLW93b1kyaEF3UHg4OA?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="tech-4">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">AI at Meta</span>
-            </div>
-            <div class="news-title">From Brain Waves to Words: Brain2Qwerty Offers a New Path to Communication Without Surgery</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">Meta FAIR 发布 Brain2Qwerty，通过非侵入式 MEG 读取大脑信号并解码为打字输入，准确率达 81%，为非侵入式 BCI 设立新基准。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1uT0UzTC1ocmFNckxuQzhhQWpMMGMyS3pfa0drbUxnNjB1RTZDbkxpWm5wRDB0SDc3WkZCNWU5My0xUFhrbFBzM0lyNEgzNUhaLUM5V0U2QjFpQUF3OXdPYmNTOWl3MjBUNVZRNHhra0FtY1h2N3c?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="tech-5">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Fox Business</span>
-            </div>
-            <div class="news-title">New China AI model proves to be powerful in tech race</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">一款来自中国的新开源 AI 模型在多项基准测试上接近 GPT-5 与 Claude 5 水平，重新引发&quot;AI 斯普特尼克时刻&quot;讨论。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE4xcHRyRzhud3ZSMkVfYzM2M0xqVXdJWUlMaVg0TG5EUHNQUEdJbVJTRWJraS13RVBWRVJlYzRBQjluaEVfa3ZLdlpzaTBoM0NrOUlGcXJzdnVNdGM?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-tier-4" id="section-kol">
-      <header class="section-header">
-        <div class="section-title">
-          <span class="section-emoji">🎙️</span>
-          <div>
-            <h2>Tech Leaders & KOLs</h2>
-            <p class="section-cn">科技领袖与 KOL · <span class="section-sub">中等可信度 · 观点与表态</span></p>
-          </div>
-        </div>
-        <span class="section-count">4 条</span>
-      </header>
-      
-      <div class="news-list">
-        <article class="news-item" data-id="kol-0">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">MSN</span>
-            </div>
-            <div class="news-title">Sam Altman reverses AI job loss prediction ahead of IPO push</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">Sam Altman 在 IPO 路演前夕公开撤回此前&quot;AI 将消灭一半白领工作&quot;的预测，改口称&quot;AI 是工作增强者而非替代者&quot;，被指为缓解监管压力。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMi3gJBVV95cUxPazk3bjl3TW1ObVFHTHRkN1Z1NW5CUXEzSXRsc0d2NWJIMWJWUGtpelE2XzZOZjlfTTIwbExTQXhYN2hYRmRQYUJOR2FvaVA0WXRLVzB2d2dvZ1A2Uk84OU15MmtNdkJNV3hwVWtfdGZqRkw1QTZhR0RGNzE2THRkeWtKZ3g4dTE5b2lWdTNjaHNzbXlubWE5TURoTm1fSkpPdWhvYXBQZFVySER3S05ObU9ESEVEanhuT21wM0VRWUVpREpGbG5iS1pnTzM2bkJCU25uZlBTbl82SHl1ZFctS1ROQWh0UUoxM3NKMlZzX0dnMzBEUWJLa0IyeVBTbnpMUDJVTmx5NVFRcmFNczdIVGNSYTNNSGpsMXNERnhoQklobEI1Y3FydnFkTEp1c05aT2puMmJwWUhWek5RcEVmTC1FaGJ4cE5sWlVld3VzOHpKaHBfZUc0aWtrdHpvUQ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="kol-1">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">StartupHub.ai</span>
-            </div>
-            <div class="news-title">Hugging Face CEO on Anthropic&#x27;s &#x27;Dangerous&#x27; Label</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">Hugging Face CEO Clément Delangue 公开抨击 Anthropic 给某些开源模型贴&quot;危险&quot;标签的做法，称这是&quot;用安全话术包装竞争壁垒&quot;。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQNUs1SHI3Qm1oZzd4N3VGZ0dkT0ZPMUVkM2lpTzA0Ukp3TU9pOHJVTnVES2Z5WlpJdlFtM1ZXOGZxZDBUM0ZpMHRwaExfSWsxZmtrY1J1WmVWUFlIa1JPbWF1ZzZBdHNlaERrVnVJdVVwcDk0U0ZrUEVWZnZtQk1Ndk8xTktDSkdJOXFzTjdwNDc4U1ZVZU5ac1IyZFZ1bS1tcGxzc25DcTExcjN0ZHdN?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="kol-2">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">AOL.com</span>
-            </div>
-            <div class="news-title">SoftBank CEO questions Elon Musk&#x27;s vision of AI data centers in space: &#x27;What&#x27;s the point?&#x27;</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">孙正义罕见公开质疑 Musk 提出的&quot;太空 AI 数据中心&quot;愿景：&quot;在地球能搞定的事为什么要发射上天？&quot;暗示对 xAI 估值的保留态度。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOQXJIaFdDbHVPTFMtTHZCbTZZcGlQd21yX3p2TXVBZHJZYkt6RjdzX3diaWgyUWV2WVZDdk5JMjdKV21Gcl9GMVU2c2JDYzlmd2dBX3ZqM0dWSmlWQzdWQ1lscDU1X1FPQWdKWjJpd1ozLVV0TFdSZlRjUzBHd0lqZk4tZw?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="kol-3">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">24/7 Wall St.</span>
-            </div>
-            <div class="news-title">Kevin McCarthy Says Both 2028 Nominees Could End Up Running Against AI</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">前众议院议长 Kevin McCarthy 在播客中预测：&quot;2028 大选两党候选人最终可能都要面对一个 AI 候选人&quot;，呼吁联邦立法禁止 AI 竞选。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOOG5FdGdkdW5Pa0tFOXhYck5xbDJnV29na2dKVy05UTVpdE5RallYYXdLbVRvdERUcjNzVTJxSjlnOTFEUm8zWm1CYUpROGJDSTlZN0sxX2o1V0ppUGV5WTBaWDBuU0dRQ2Y5TTZUREQwNU14NVItRGVNSUg5bjlZakVycnhyZldhTElXcVNrdHMyOTZqY243d1dWeXZTcHZKUlNpTjRXTUxWM1ZiSEptYUdIQ0c?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-tier-5" id="section-rumors">
-      <header class="section-header">
-        <div class="section-title">
-          <span class="section-emoji">🫧</span>
-          <div>
-            <h2>Rumors & Gossip</h2>
-            <p class="section-cn">传闻与八卦 · <span class="section-sub">低可信度 · 未经证实信息</span></p>
-          </div>
-        </div>
-        <span class="section-count">5 条</span>
-      </header>
-      <div class="rumor-warning">
-          <span class="warn-icon">⚠️</span>
-          <div>
-            <strong>谨慎对待以下内容</strong><br>
-            <span>本板块为未经独立验证的传闻、泄露和爆料。可能出现假消息、过时信息或被故意制造的市场情绪。请以官方公告为准。</span>
-          </div>
-        </div>
-      <div class="news-list">
-        <article class="news-item" data-id="rumors-0">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Firstpost</span>
-            </div>
-            <div class="news-title">Grok 4.5 to launch soon, Elon Musk says it could rival Anthropic Claude Opus</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">Musk 暗示 Grok 4.5 私测版本即将上线，并称其&quot;在推理基准上可与 Claude Opus 5 一较高下&quot;。⚠️ 无第三方验证。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPN0gzMkU3bHNyemxVYm5RUF9IczBXZ0RfTVNXN1diQXNUc3ZWY2k0MllUOHY2SERPck1fdldMR0ZqVUx0SUl3aTZyUnVLa1BHMHhFUWpHcFBlVXN2VmRPTXdVVmdiVng0ZVZPZ29LR2p2dXRfNUN2cVZUczZDNkR3QkFzN2NoOG9GZ29mMXpiWmxha2FmRDI1QnBtcmstcjlhc1h0Nm43NDFNZXh5eVl1R0N1UllCVldTZi02S9IBwgFBVV95cUxQYTVCY3B2NWxXQzRKY1V2d2pkZkRaXzJVS3ZlVm9lMmdzU08wZmNUVGl4NnNxSUEycFducWh0ejU2U0RQcWU0aXFXRTRfd08yeTJHNWJjaHpiVkY2QXdoeFBhUDJUUDJpbHlaS3lmU3duOXhyNjJLa2xBNjJjWmVsVlJxRGhjVkhiLV83UVU4YWhLbFBuWFVmMW8xV3lCSmFHS182NWlSNjB3UV9SWmNCSFI3dURtNEpwbEJYREFIcXJjUQ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="rumors-1">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Business Insider</span>
-            </div>
-            <div class="news-title">Elon Musk says SpaceX is putting top Starship and Starlink engineers to work on Grok</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">据 Business Insider，SpaceX 据称已调派 Starship 与 Starlink 顶级工程师转岗 xAI，加速 Grok 训练基础设施建设。⚠️ 未获 SpaceX 官方确认。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOSnk2UjdBMlRTMkNsZ19GVmx5bkFmNWNmaUEwNzA0SnV0bUo2QmNQTFUxckVENVQ1aGd3dl8takpQOWRrYWZHQXdMWXdPcmxRbXpTR3VEMUZRa290LU1QdVpaaEJKVkdoV0JJdi02R0s0XzFYT3FhUUFtYTZGWHJqX2lEb2steEJraUQ5OHFqMzVleTAtSEtrV2IwVQ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="rumors-2">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">news.bloombergtax.com</span>
-            </div>
-            <div class="news-title">Anthropic, OpenAI Tax-Exempt IPO Move to Stoke Congress’ Ire</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">彭博税务报道：Anthropic 与 OpenAI 据称在探索&quot;免税 IPO&quot;结构以维持非营利母公司控股。⚠️ 可能引发国会强烈反弹。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOWVk3N0JrZmpRZkVNd3k1SWdGUDlidkJoZ25JeHg2VWxqU0RxeU80SzExVlZwcU1rSm9mYUdGazlHZzdaLW9VeFd1TnpQQ1VrcVlzaWFuUTFaYVBMNDJaczJDY09TSXhULVNNQjVuSjE2cXlxNGRNWlNBMzRUMkc2VnhnMHc2N3lyU050bXZZSUd2MktONm83bHhDZ1JEUXdKbnkwT0g0dE0?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="rumors-3">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">TechRadar</span>
-            </div>
-            <div class="news-title">Megapod is the modular AI data center kit that Elon Musk&#x27;s Tesla wants to sell — but there&#x27;s a tiny problem</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">TechRadar 称 Tesla 正秘密开发模块化 AI 数据中心&quot;Megapod&quot;，与 Musk 的 xAI 形成内部竞争。⚠️ 仅基于供应链泄露。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQckVQUXE4TmpiYklHZlVhTDg1dkdaU0hYV09RS0p2dGtmMzFubFZPV1BpYWs4eTNLU1BPc2xwZWxvc05tRC1ZdkpreTFkb2l1WXRiVk52cm5ZcmRwMy1FYV9IQ1VnU1Qzd1FJYW5GVndUTjduV2NVV1VqUDlfRFNYOWJXOHhMMXV4a2ItMzFoWm45WlFXdXVaZUNpT09IUnlHekxNbFlxZDRqbXpucUtQZG1jN3RDMmRFOWpVLWEyMXBRR3FvVDFyLVQ5RjJvT1lmVWxsMGJ1TE0tSmZWSTRKOEJn?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-        <article class="news-item" data-id="rumors-4">
-          <button class="news-head" aria-expanded="false" onclick="toggleNews(this)">
-            <div class="news-meta">
-              <span class="source">Forbes</span>
-            </div>
-            <div class="news-title">Is Anthropic’s Fable 5 Coming Back This Week?</div>
-            <span class="expand-icon" aria-hidden="true">▾</span>
-          </button>
-          <div class="news-body">
-            <p class="summary">Forbes 传闻 Anthropic 的下一代视频模型&quot;Fable 5&quot;可能本周回归，但 Anthropic 官方至今未提及任何视频产品路线图。⚠️ 来源单一。</p>
-            <a class="read-more" href="https://news.google.com/rss/articles/CBMingFBVV95cUxPNGlCUkc1cXpNdzRFZUhQWW5HSGRRUGlJQ3Z6RFQ2dlUzU0pYTFFrNnM5akNxSVhMSmVOWG9MMWJNektqeTdlNnFlaDRfc0pWcXRaRElLbVM1eEVleDRvd24zallvYkFqOHlUbWF5eXNSdS1CX3I3akVYWlR3bVp0Y0tLbFhQZDdiN3ZiMnUzcW1sOGRWVHlfQUFKOEZCUQ?oc=5" target="_blank" rel="noopener noreferrer">
-              阅读原文 <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-  <footer class="page-footer">
-    <div>本页由 Lucien Studio AI 编辑自动生成 · 数据源：Google News RSS</div>
-    <div>所有外链跳转至原始出版方 · 内容仅供参考 · 2026-06-30</div>
-  </footer>
-
-</div>
-
-<script>
-  function toggleNews(btn) {
-    var item = btn.closest('.news-item');
-    var open = item.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-</script>
-
+  <script>
+    document.querySelectorAll('.item').forEach((item)=>{
+      const toggle=()=>{
+        const open=item.classList.toggle('open');
+        item.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      item.addEventListener('click', toggle);
+      item.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }
+      });
+    });
+  </script>
 </body>
 </html>
