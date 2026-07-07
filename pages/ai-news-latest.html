@@ -3,517 +3,442 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 日报 — 2026-07-06</title>
+<title>AI 日报 · 2026-07-07 · Lucien Studio</title>
 <style>
+:root {
+  --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#e6edf3; --muted:#8b949e;
+  --accent:#4fc3f7; --purple:#ce93d8; --orange:#ffb74d; --red:#ef5350; --green:#81c784;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-  background:#0d1117; color:#c9d1d9; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  line-height:1.6; padding:0 0 60px 0;
-}
-.container { max-width:900px; margin:0 auto; padding:20px; }
-header {
-  text-align:center; padding:40px 20px 30px;
-  background:linear-gradient(135deg,#161b22,#0d1117);
-  border-bottom:1px solid #30363d;
-}
-header h1 {
-  font-size:2em; color:#58a6ff; margin-bottom:8px;
-  letter-spacing:1px;
-}
-header .date {
-  color:#8b949e; font-size:1.1em;
-}
-header .count {
-  display:inline-block; margin-top:12px; padding:4px 16px;
-  background:#1f6feb22; border:1px solid #1f6feb; border-radius:20px;
-  color:#58a6ff; font-size:0.9em;
-}
-.cred-bar {
-  display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
-  padding:16px 20px; background:#161b22; border-bottom:1px solid #30363d;
-  font-size:0.85em;
-}
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; line-height:1.7; }
+.container { max-width:860px; margin:0 auto; padding:24px 16px 60px; }
+.header { text-align:center; padding:32px 0 20px; border-bottom:1px solid var(--border); margin-bottom:20px; }
+.header h1 { font-size:1.8rem; font-weight:700; letter-spacing:-0.5px; }
+.header .date { color:var(--muted); font-size:0.95rem; margin-top:6px; }
+.header .brand { color:var(--accent); font-size:0.8rem; margin-top:8px; letter-spacing:1px; }
+.cred-bar { display:flex; flex-wrap:wrap; gap:8px 16px; justify-content:center; padding:14px; background:var(--card); border:1px solid var(--border); border-radius:10px; margin-bottom:28px; font-size:0.82rem; color:var(--muted); }
 .cred-bar span { white-space:nowrap; }
-.cred-bar .note { color:#8b949e; font-style:italic; }
-
-section.tier {
-  margin:28px 0; padding:0 0 12px 0;
-  background:#161b22; border-radius:8px; overflow:hidden;
-  border:1px solid #30363d;
-}
-.tier-title {
-  display:flex; align-items:center; gap:10px;
-  padding:16px 20px; background:#1c2128;
-  font-size:1.2em; color:#e6edf3;
-}
-.tier-icon { font-size:1.3em; }
-.tier-sub { color:#8b949e; font-size:0.75em; font-weight:normal; }
-.tier-count {
-  margin-left:auto; background:#30363d; color:#8b949e;
-  padding:2px 10px; border-radius:12px; font-size:0.8em;
-}
-.warning-banner {
-  margin:12px 20px; padding:12px 16px;
-  background:#3d2e00; border:1px solid #d29922; border-radius:6px;
-  color:#f0c674; font-size:0.9em;
-}
-.item {
-  border-bottom:1px solid #21262d; cursor:pointer;
-  transition:background 0.2s; outline:none;
-}
-.item:hover { background:#1c2128; }
-.item:focus { box-shadow:inset 3px 0 0 #58a6ff; }
-.item-head {
-  display:flex; align-items:center; gap:12px;
-  padding:14px 20px;
-}
-.n {
-  flex-shrink:0; width:28px; height:28px; line-height:28px;
-  text-align:center; background:#21262d; color:#8b949e;
-  border-radius:50%; font-size:0.8em; font-weight:bold;
-}
-.item-title {
-  flex:1; font-size:0.95em; color:#c9d1d9; font-weight:500;
-}
-.item.rumor .item-title { color:#e0a0a0; }
-.source {
-  flex-shrink:0; font-size:0.78em; color:#8b949e;
-  background:#21262d; padding:2px 8px; border-radius:4px;
-}
-.arrow {
-  flex-shrink:0; color:#8b949e; font-size:0.7em;
-  transition:transform 0.3s;
-}
+.warning-banner { background:rgba(255,193,7,0.12); border:1px solid rgba(255,193,7,0.5); color:#ffd54f; padding:14px 18px; border-radius:10px; margin:24px 0 16px; font-size:0.88rem; }
+.section { margin-bottom:32px; }
+.section-header { display:flex; align-items:center; gap:10px; border-left:4px solid var(--accent); padding:10px 14px; background:var(--card); border-radius:0 8px 8px 0; margin-bottom:14px; }
+.section-icon { font-size:1.3rem; }
+.section-title { font-weight:700; font-size:1.05rem; flex:1; }
+.section-count { color:var(--muted); font-size:0.82rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:10px; margin-bottom:10px; overflow:hidden; cursor:pointer; transition:border-color 0.2s; }
+.item:hover { border-color:var(--muted); }
+.item:focus { outline:2px solid var(--accent); outline-offset:2px; }
+.item-header { display:flex; align-items:center; gap:10px; padding:14px 16px; }
+.n { display:inline-flex; align-items:center; justify-content:center; min-width:26px; height:26px; border-radius:50%; font-size:0.75rem; font-weight:700; color:#0d1117; flex-shrink:0; }
+.item-title { flex:1; font-size:0.95rem; font-weight:600; }
+.item-source { color:var(--muted); font-size:0.78rem; white-space:nowrap; }
+.arrow { color:var(--muted); font-size:0.7rem; transition:transform 0.3s; flex-shrink:0; }
 .item.open .arrow { transform:rotate(180deg); }
-.item-body {
-  max-height:0; overflow:hidden;
-  transition:max-height 0.4s ease;
-}
-.item.open .item-body { max-height:500px; }
-.summary {
-  padding:0 20px 12px 60px; color:#8b949e; font-size:0.88em;
-  line-height:1.7;
-}
-.read-link {
-  display:inline-block; margin:0 20px 16px 60px;
-  padding:6px 16px; background:#1f6feb; color:#fff;
-  text-decoration:none; border-radius:6px; font-size:0.82em;
-  transition:background 0.2s;
-}
-.read-link:hover { background:#388bfd; }
-footer {
-  text-align:center; padding:30px 20px;
-  color:#484f58; font-size:0.8em; line-height:1.8;
-}
-footer a { color:#58a6ff; text-decoration:none; }
+.item-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; padding:0 16px; }
+.item.open .item-body { max-height:500px; padding:0 16px 16px; }
+.summary { font-size:0.88rem; color:var(--text); margin-bottom:10px; padding-top:4px; }
+.orig-title { font-size:0.8rem; color:var(--muted); margin-bottom:12px; }
+.read-link { display:inline-block; background:var(--accent); color:#0d1117; padding:7px 16px; border-radius:6px; text-decoration:none; font-size:0.82rem; font-weight:600; }
+.read-link:hover { opacity:0.85; }
+.footer { text-align:center; padding:24px 0; border-top:1px solid var(--border); color:var(--muted); font-size:0.8rem; }
+.footer a { color:var(--accent); text-decoration:none; }
 @media(max-width:600px) {
-  .source { display:none; }
-  .summary { padding-left:20px; }
-  .read-link { margin-left:20px; }
-  header h1 { font-size:1.5em; }
+  .header h1 { font-size:1.4rem; }
+  .item-source { display:none; }
+  .cred-bar { font-size:0.75rem; }
 }
 </style>
 </head>
 <body>
-<header>
-  <h1>🤖 AI 日报</h1>
-  <div class="date">2026-07-06</div>
-  <div class="count">共 28 条新闻</div>
-</header>
-<div class="cred-bar">
-  <span style="color:#4fc3f7">● Policy</span>
-  <span style="color:#81c784">● Business</span>
-  <span style="color:#ba68c8">● Tech Media</span>
-  <span style="color:#ffb74d">● KOLs</span>
-  <span style="color:#e57373">● Rumors</span>
-  <span class="note">（可信度由高到低 ↓）</span>
-</div>
 <div class="container">
-
-    <section class="tier" style="border-left:4px solid #1976d2">
-      <h2 class="tier-title">
-        <span class="tier-icon">🏛️</span>
-        <span>Policy & Regulation</span>
-        <span class="tier-sub">政策与监管</span>
-        <span class="tier-count">6</span>
-      </h2>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">1</span>
-          <span class="item-title">Executive Order on &quot;Promoting Advanced Artificial Intelligence Innovation and Security&quot;</span>
-          <span class="source">Holland &amp; Knight</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">白宫签署新行政令，旨在推动前沿 AI 模型安全发展，要求模型开发商提前向政府披露安全协议并接受安全审查。该令还涉及政府早期介入 AI 模型部署的机制，被视为联邦层面对 AI 行业监管框架的关键一步。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNa2pMc0VsZmQ4V002ZWdNeEEyZkkxTWVFdGlpenBFdFRfbFNhR3REcFRLQmpxU0F5eERkcERfcUZwc1RKb0FYT2l4S0s3WWZlLU1nYmpraGpWV1JfMEZUbDNsVVVlS3FnLWp4X0o5NFVFNExmYV9nbC1vbmxNbXgwYlcwbGJyblU2Tk90NkN5MWVYZERybFdiYUlVY1JSdlNHUklkMDdYcDZLS01MRjd6aUJiejF3dXhkOGN0Q0dkSlhwNmRsR2tialJ3?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">2</span>
-          <span class="item-title">Trump rejects &#x27;FDA for AI&#x27;: What the US President&#x27;s hands-off approach to regulating artificial...</span>
-          <span class="source">Moneycontrol</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">特朗普明确拒绝设立&quot;AI 版 FDA&quot;的提议，选择对人工智能产业采取放手策略，与欧盟严格监管形成鲜明对比。分析人士认为这一立场将加速美国 AI 企业发展，但也引发安全隐忧。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxNYUVfYlp1ZFdSU3diMFUtT0dsQ0M0eTh1ZHgxV3dTWDVtaFRjOWl1OWdKUFpiY0NmYTJ1S1BxQk5VdDFsVEVrbzgyS3gySUpnOC1GSkJnUi1DT1Nwcmc4UmdOeVV5TnhDVVRMMW54NkxjTnV2VENDdkhacDNlOGR2aUZPOXl2Y3lHNjJBWWhLY0NYN3pIUDhkaEF4ZjZrb1ZhNVFUaURJVnZZMmVtNEZQUEk4dXp3b2VNNlNGRXptN0xFRi1fVENJMVRHSU91MVFFME5OenVXOVMzX3htdHlJanpSM09GT1lVdkkxZmtwYk0tSDZhaEVZLUJvZ0TSAYICQVVfeXFMTWdaNkxmM2d0bUZpM1lHcEFiOGlRWERnNS1XVlRBNmJ4bkh2OVp5SEZsUnVXalJzYkdUQ1lTVDZoWEdRTThZWmVuRHF6dk82Qk1mdWZDNjhkYXJHQ1VERVhVR0pBdTlXYm5HTl9xand3Ym9rMFA1U0JvU05NbGtCelRGZVJKWXhsRllJLTFOXzVuNlhvbVFtUzJvTFpCNGNTcGxNQ0plcVpNVnluMWpXQThqSUN0WWpNazdkMmloenJXVmdMeTVMb2FkYWc4QlVHOFlYZEJDb1R0RWFMbWZ5NEtRN0tRVmx5QWVRY1hLc044OVV3dlZ5Mk8yWWl6SHQ5NTZ3?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">3</span>
-          <span class="item-title">White House accelerates plans for AI model standards</span>
-          <span class="source">Financial Times</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">白宫加速推进 AI 模型标准制定工作，据金融时报报道，政府正与行业领袖密集磋商，拟出台前沿模型安全基准。此举紧随 Anthropic 模型限制风波之后，意在建立更清晰的合规框架。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPZWFESS1qUHh6dmQ5bldDRlNxMzdacnJ5UUtaaHdHcFM3YjNkdngxdDNha2c2ME5YcWdwMUtza3dsb01uTldtU0NnQ200aFBpYmFISGw3bmpNUzEwSEI0bElsQU5YUS1YbmVjWFVHOEF5THozcU1ReG9OWVdnRzdadktsS0Y?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">4</span>
-          <span class="item-title">US removes curbs on Anthropic&#x27;s latest Fable and Mythos AI models</span>
-          <span class="source">Reuters</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">美国已正式解除对 Anthropic 最新 Fable 和 Mythos AI 模型的限制令。此前这两款模型因安全顾虑被暂停约两周，路透社报道称政府与公司达成安全协议后恢复了访问权限。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNZDJJRUpoY0J3YUZXZWFpUFF5N2pzUTM3X2pSMzZXdVI3ZEtsTnU1b09yRl9TU1NhMlV2RFF4Q3ZEaUVnQXVYWlpzd0k0OGVjRkgzNlBtVTFab3ZxZWFGWUMtWXFCOEZqODdRNzhhSml1Y0pTZGZVNVJLSFZvSGJ2VDFMZ1RTNm5fTXoxVXpQWWRSR3ptWXVpM2Mzc0l4YW05cl9LRDBPV3kwc1FhdmVKcWJwWHA?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">5</span>
-          <span class="item-title">U.S. Presses Meta to Agree to A.I. Reviews as Security Concerns Rise</span>
-          <span class="source">The New York Times</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">纽约时报报道，美国政府正施压 Meta 接受 AI 安全审查，反映出对大型科技公司 AI 系统安全性的持续关切。此举标志着联邦层面对 AI 企业的监管力度进一步升级。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPcXpJZXF2TDlaNjM2WkZqSVFnWjZCaEdlOUpFWmJfVnlTdkUwcUZhaUpKNTV3TUVvMTFRSnlZYUJCZ3llZ0RIXzI1aXNsWjBkb1hSTDBqNklSTWRIdU9PMEpRalpuZHJsTnZIY2puN2hueVhpQ3lQOU1WX3djN2I1N2o4OXlMZzlIOFYxcA?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">6</span>
-          <span class="item-title">California becomes the first state to launch a tool to monitor and track artificial intelligence’s impacts on the workforce</span>
-          <span class="source">CA.gov</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">加州成为全美首个推出 AI 监测追踪工具的州，州政府门户网站公布了该平台，用于实时跟踪人工智能在公共服务中的应用情况。这一举措为其他州的 AI 治理提供了范本。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxObG9LTE4weVhnNzlSck5JZ0VHc1RUMnd3TUNXdmloMkF5bndLUHpaMUNKd1JseG5oOVVJWjRuZ3NiQXFrQlo5Tjd6aVFSckczOEd5R3R4NTJmSnVvcmxfUFN0LWlBeV9NczFVaUt0X1RfMjVrT29pMUpxNFh5c3NFVWNScVFuQndERFo5bnBOOW51RW5zTWd0bmVudE1NUXJaSzNURk40bWl3aWpJYVlxT3JwX3J3LVpFWWpOT25Qei1JVjFnS2c2amNTVUVOY2VmN3o5UDVEcGJycEJCNDkwZHE0eFJSZ1BJVXRqQUt3?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-    </section>
-    <section class="tier" style="border-left:4px solid #388e3c">
-      <h2 class="tier-title">
-        <span class="tier-icon">💰</span>
-        <span>Business & Markets</span>
-        <span class="tier-sub">商业与市场</span>
-        <span class="tier-count">6</span>
-      </h2>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">7</span>
-          <span class="item-title">South Korea&#x27;s SK Hynix to launch $28 billion US listing to ride global AI wave</span>
-          <span class="source">Reuters</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">韩国 SK 海力士拟在美启动 280 亿美元 IPO，以搭乘全球 AI 浪潮。作为英伟达关键内存供应商，该公司希望借助美国资本市场深度，吸引 AI 领域投资者。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQOExMMERoTnlfeUtLdDFoejc3emp1SXBuQ3NHUGk4YndsTjBxamcyYnh5Qmp6ckFrNk4xTGtld1ZNT2NDOVJHZGVwODVfSENhYXA1Qkg3SjhnZnNjTmhmSjg5Y2x5MzhZbWRDU3M1VHhBV0NxdGJqYkg0ZnlUSUEybVVNRm9MN3R2VnBWRHZVN2NTbFZJZjVSVEpaV3k3ZGVGOXg1Rl9Hd0dveVlLMGRYQ0xtQWx3VkM4N3Bmc1p1MmRSMVk?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">8</span>
-          <span class="item-title">Microsoft launches its own AI deployment company with $2.5 billion commitment</span>
-          <span class="source">TechCrunch</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">微软宣布成立全新 AI 部署公司&quot;Frontier Company&quot;，承诺投入 25 亿美元并配置 6000 名工程师，将 AI 技术直接嵌入客户业务流程。TechCrunch 指出这是微软从平台型向服务型转型的重大战略。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOYXV6S05EQ3Eydjktb2hSb1JYY21RbW9kRUhKbG5VY3RjY0hPTGRpRlNsNjRGLVpYVmhPY1NZalFmVVh4VWdHUWtzSmFoMGVzY2NWajIteHRqYksteHU5YXlpZzJ1VjNWNlhsN3hySjhpSjZfY1dyaHdDRDY1a3RvQXZEci1KeV9nZkc5SktmTDRHaTdFSDJzeXlsb0dpWnpBY0ZudzliR1BfaHl4R0gyYQ?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">9</span>
-          <span class="item-title">Anthropic in Talks With Samsung to Manufacture Custom AI Chip</span>
-          <span class="source">The Information</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">据 The Information 报道，Anthropic 正与三星洽谈定制 AI 芯片合作，意在降低对英伟达 GPU 的依赖。此举反映出头部 AI 实验室正加速走向芯片自主化。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPUTh0cENsZUllRDdoaGw1QVlWcU4yeXJtbGdfS2l5Vlo2VThNLXVPTlQzZjZRXzVqTWFLQTh4WFFtQTluQW5GTXdObEY5V3dJSGNVZVNHek5XT3FETGpXM1lPN2N3eFNjdEhOWjZSV190cUpFd3pUTVpwanpvZ3gzSFE2YmpxNDFHTXhrU1JzZXVHck1k?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">10</span>
-          <span class="item-title">After decades in Silicon Valley, a former Apple and Amazon engineer started an AI chip company in his mid-50s</span>
-          <span class="source">Business Insider</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">一位在苹果和亚马逊工作数十年的资深工程师离开硅谷，创办了 AI 芯片公司。Business Insider 报道称这一趋势表明，AI 算力需求正在催生新一代硬件创业浪潮。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcENOMXVnc0NtbTdkYXdXbVNHcEhVUXRaWXUyMXFTUFRRQmc0QmJ0WjVOVTEyY1ZVcl9jREFHdmJ2ZGszUlJ0TU5pLTR4Nnp5cF81MHhqV3Y0aTVPa2V1OHRrZlRjZEhsb3F3SXh1TVItLTRRY1hBNjA3UWRweXJjelBQUjlJSWlkY3otM0Z4NnR1cXZ1UlFIUGJYY0N4Y3N5R0tJQlo2THY?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">11</span>
-          <span class="item-title">The AI Boom Runs on Debt. Global Regulators Want to Shut Off the Tap</span>
-          <span class="source">24/7 Wall St.</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">24/7 Wall St. 报道，全球 AI 产业的高速扩张高度依赖债务融资，但监管机构正试图收紧资金闸门。这一矛盾可能成为 AI 行业下一轮洗牌的关键变量。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPaTBmQ1pfbTFYQlo5Y1pBVWhpSG9ZWUI3U1dPMW5FaWVIUGFXTjhlWm1vWVRUdE45dnJzTUR6cGJaTzZXbmZMQ2J1V2ZoQzVFS3pOeGVMRWp3aGZWNVdXWHdVdU9NZVdBMGVmVGpDMU83QUhoa1B2bldXS1BHUlVTeldkTzNLaDQxQ3B1TmlHNmVfTlRmazVUOWRBZUVROXA4UU9zQXVtcVcxb0xDcXVwSg?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">12</span>
-          <span class="item-title">Microsoft’s next big bet isn’t on a model but on becoming the Swiss Army knife of enterprise AI</span>
-          <span class="source">Fortune</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">财富杂志分析认为，微软的下一步并非押注某个 AI 模型，而是致力于成为企业 AI 的&quot;瑞士军刀&quot;——通过 Frontior Company 整合多模型能力，为企业提供端到端 AI 解决方案。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxPVjRlT0N5VDlFdGxmcVM3MTU1N1E3cjBYSWxnRU96QVJSdjFLM2ctbm1ab2d0QWZrVnBDX0pVT0wwNHdYczMwWE1KRjVjNUotd2ptMDdpRS0zUzZ1eVRWeTQ5QjdKUHYwQlhYYmM0RTYydkp0UFkyOWZxQ2F5eDlfcTFVaDJiLVhCM0x3Z2gyaVd1SWc?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-    </section>
-    <section class="tier" style="border-left:4px solid #7b1fa2">
-      <h2 class="tier-title">
-        <span class="tier-icon">🔬</span>
-        <span>Tech Media Deep Dives</span>
-        <span class="tier-sub">科技媒体深度报道</span>
-        <span class="tier-count">6</span>
-      </h2>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">13</span>
-          <span class="item-title">Anthropic wants to develop its own drugs</span>
-          <span class="source">The Verge</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">The Verge 报道，Anthropic 宣布将进军药物研发领域，利用其 AI 模型加速新药发现。此举标志着 AI 实验室从通用语言模型向垂直行业深度应用扩展。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPOUJoM1JuTHA3NFFTR29IZUJZM1FVbEx6WThBTnNlWjAtMjliYzRiYkU4azVqV1BOS0JmdFBiMnUydWVtQW9OaWx0UXQ1ajMtMERxR2hCZWw0NFozWDB5dHpDdUZYMGlYT3dvTzNHaHRKR01TYmRJbjBBUENXdVlwTmVNTFA1dWxuUDVrc0dIWE5XNEJxcW5JMW01RTdzSUl3czM2SmN3?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">14</span>
-          <span class="item-title">Mark Zuckerberg tells staff that AI agents haven’t progressed as quickly as he’d hoped</span>
-          <span class="source">TechCrunch</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">TechCrunch 获取的内部会议记录显示，扎克伯格向员工坦言 AI 智能体进展不如预期迅速。这番表态罕见地承认了 Meta 在 AI Agent 赛道上面临的挑战。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPNUF3VlFVc0VWdDVKcDRFUTNWdU8yZFlIYW5YRmU0Nkx0dVpXS2NqVE9PZW1UZGc4SGVCem0tVk5weDB2Zlh2R1Y3eS0tOUZtampsTG5wM3hGVUo5bm1tZVlrTDN3UDZUWGx1aGEtVjlyUThxaG41NXFLSUtRX1BwaDhCQ0kyLXQ5dDlOQmtqMFl2RTh0M2I4Mi1yYjZEUFJrVW54S3ZpZy03QnU0amp5WkJ4Z2xmOHFFTHA4?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">15</span>
-          <span class="item-title">Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex, and Drugs</span>
-          <span class="source">WIRED</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">WIRED 调查发现，Meta 雇佣承包商伪装成青少年，向竞争对手的聊天机器人询问自杀、性和毒品等敏感话题，意在测试竞品的安全防护底线。这一做法引发行业伦理争议。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxONFV0SUVzcE5ZR3E3UFluWkhEc0U0TDJIaXh1V0EyMS12TG9IVmR0WmRvUk14Umw1Tlp3VldsM3FnSFhiX25CQmE5ZFNOeDd6ckdlX2tsSERGLVdmaFFma0JiSzFyd1Z4VjdkQVc2STJNc1FwYjVzcDZ0RGxHWll0RlZmOV95NWxGeUwtRA?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">16</span>
-          <span class="item-title">A behind-the-scenes look at Midjourney’s medical scanner leaves many questions unanswered</span>
-          <span class="source">The Verge</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">The Verge 深度报道了 Midjourney 推出的医学扫描仪产品，但幕后细节仍留下诸多未解之谜。该产品标志着 AI 图像生成公司向医疗影像领域的跨界尝试。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPWkkxRmFJeS1lWW13bTRQM2VkODBrZF9SdUNoMGJEdDRYRVE0VVlyancxcVZ0RFNXN3Z6Rm5SbThiMDlVR25ibGtnZFN4U3B2amtZQ0psWk5ONHVmcE9qZEJzUGE0dVlZQzNKZENkUzRWWXZYYzFYRTQ4Tm9FUmFaclVYV0lWUXlhVDhBS3VVS282U2twS1pLN0hGNVJjY1oxSGVxSmNaU3BBRHJ4SjN1U29jY1g1eXRtdHVjNg?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">17</span>
-          <span class="item-title">Claude Helped a Hacker Find a Way to Issue Tickets to Almost Every US Music Festival</span>
-          <span class="source">WIRED</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">WIRED 报道，一名黑客利用 Anthropic 的 Claude AI 找到了向几乎所有美国音乐节发行伪造门票的方法。这起事件再次引发对 AI 被用于网络犯罪的担忧。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPSndRNnZoZ2dKN2NoODlycXNwNUkxSUJPbWVBanBoTHFxbTBvdl9IbkxVeU4xMU8zWU5BODdRME9ZUE9aNGYxaW92X2pVUkJCdUlQcHFXbnZVYmZ2blRZcGphd0ZRVGozaTc5d1hJSVdyVkJpeG5saDlXeXJFY2c3TzgzcTBBaTFrdHg4d3liY0VoeU50anA5Q1NxTE5xZi1FbzZUdFRLakx3aDBwYTdHcmUwWQ?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">18</span>
-          <span class="item-title">Alibaba reportedly bans employees from using Claude Code</span>
-          <span class="source">TechCrunch</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">TechCrunch 报道，阿里巴巴据称已禁止员工使用 Anthropic 的 Claude Code 编程工具，反映出中国科技巨头在 AI 工具供应链上的地缘政治考量。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPbG1DV3lraGc0bmFSemd0ckhVNXNKNk9qS3ZiWV9NWTNwVTIyWk9vaV91VkR0aEtPTmFoY2ROVjBWTU9feFpUWVJEekNwd25DeXRsOThzWjFnaDZOTUctNThMYUptVTZxX2VnSGdGQ2xBZTZ5TlBrT2xhQlNOUkhiOTBoTGN6NEx4NmQwSWZPQS05Vzd0ZEE?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-    </section>
-    <section class="tier" style="border-left:4px solid #f57c00">
-      <h2 class="tier-title">
-        <span class="tier-icon">🎙️</span>
-        <span>Tech Leaders & KOLs</span>
-        <span class="tier-sub">科技领袖与意见领袖</span>
-        <span class="tier-count">5</span>
-      </h2>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">19</span>
-          <span class="item-title">Sam Altman seeks new world order for AI as OpenAI slowly loses ground to Google and Anthropic</span>
-          <span class="source">Fortune</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">财富杂志报道，Sam Altman 正试图构建 AI 治理的新世界秩序，提议建立美国主导的国际 AI 论坛。与此同时，OpenAI 在模型竞赛中逐渐落后于 Google 和 Anthropic。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQVVB5TmxyRFVVeWM4RmpVakt5dnBPZ0g5RndiOTkxZEk4UnlPemRrY25wX1BBczhBMVRKLXVxY1ppb09pVzJ0dll3dUxsbUhtNFgyZE14WVJ2SEE4QVB2TXVfUjhkVTQ2VWFJbDJPUHFMN2Q1NmI0bVlwQnJoUTY2YmVzd3c1UmlHU05TOGZR?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">20</span>
-          <span class="item-title">Palantir&#x27;s Karp bashes OpenAI, Anthropic token model: &#x27;Something has gone completely wrong&#x27;</span>
-          <span class="source">CNBC</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">CNBC 报道，Palantir CEO Alex Karp 猛烈批评 OpenAI 和 Anthropic 的 token 商业模式，称&quot;某些东西已经完全出错了&quot;。他呼吁前沿模型企业重新思考盈利路径。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQRFFfb2FXMUNJVDQ2MnBIS0l3MHRiTFN2MUlxelFrc01rakRIeWRMaUktQlRwczl2UWZpdXEwWWRLMlFSQXBNQVh4UFJla0gzbUVNVkV2VXlLdW9mZGlOdVl3ak9Sc2lOdUNiLWlkNkNMWUhwOXNpUXdxd000bmVRR9IBhgFBVV95cUxPTHlva1FyR0F0anlNZjNRd2c4bDYxWXhTNEJUUHhUYkpNQm9qV3UtX3BLMFlWZ2NEc2dheWloeU9Jd3dNekpQMEswY0NwT1pUcTFTeC1kOW83UmluenZoT21kbk5jbTFhQ3NBNUxnQi12TU9QUWdpSml5UWxnTDQzSEN6UnRXdw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">21</span>
-          <span class="item-title">OpenAI CEO Sam Altman says AI &#x27;will reshape the material conditions of human life&#x27;</span>
-          <span class="source">Business Insider</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">Business Insider 报道，OpenAI CEO Sam Altman 表示 AI&quot;将重塑人类生活的物质条件&quot;。这番宏大叙事发生在 OpenAI 面临 Google、Anthropic 竞争压力加剧之际。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQZ2l0QUNFWFZobU5FazRtOWxLU25ETTJoM0taLWhTeElseUhhcTdBNVd3cjU5WlkxenFRdXBNdFM5Q01vWDQzMU5lYXZxbG1MNWxZSEY3dk05ZjBhaEY3OGdEUGZWNmRpbXlWWFY4TTBSeDB3Zmw5Ukl1R1VQdXBueGh5Vmx1SHY0VG5MRENzNmJxX180aFE?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">22</span>
-          <span class="item-title">Etzioni on AI: Elon Musk promised humanoid robots, but China delivered</span>
-          <span class="source">GeekWire</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">GeekWire 专访 AI 学者 Oren Etzioni，他指出 Elon Musk 曾承诺的人形机器人进展缓慢，而中国企业在机器人交付上已走在前面。这一对比凸显了中美 AI 落地能力的差异。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNa2NmWTdqS2tnbHZaOHkxR1dvaDFKdEp5SEQ3ZXZKSnh0TTVIVFhyLVo0UUM3TzI4WGRsZkc2REdCbGJxeTdRVVRacTYwRzBoTVdyTFBpQ2pFd2dSSlNLNDl2T2NsQjlVdDhESE9uVzg2eEh0U2VCTmVVMHNxZ2p2aHg3RFlpQ2p6M0RfTHVQbmF6amQ5NWVvOS1IZWM0S19B?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">23</span>
-          <span class="item-title">Elon Musk sends wakeup call on runaway AI spending</span>
-          <span class="source">TheStreet</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">Elon Musk 发出对 AI 支出失控的警告，The Street 报道称这位科技巨头在内部表达了对行业烧钱速度的担忧。这与他旗下 xAI 大举融资的举动形成微妙反差。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQcXRHc01USWlqaTdTa01KaFhBZDZuVDNTTW12TEVPSk9yN3k1bEM1QWtaUjNVS25QNVVtVlUzQTVfYU4tSDJqMldOdkUzT0hoZ3hEcjhITC1Od1BqNjlSMFJPTEQ3TWlDT01tZDhCMDFsNDJ6YXFxYVEwMks5Tm5MUDFJT1padU40SzN6SDZn?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-    </section>
-    <section class="tier" style="border-left:4px solid #d32f2f">
-      <h2 class="tier-title">
-        <span class="tier-icon">🫧</span>
-        <span>Rumors & Gossip</span>
-        <span class="tier-sub">传闻与八卦</span>
-        <span class="tier-count">5</span>
-      </h2>
-      <div class="warning-banner">
-        ⚠️ <strong>注意：</strong> 本板块新闻来源于传闻、泄露或未经证实的报道，可信度较低。请谨慎对待，勿作为决策依据。
-      </div>
-      <div class="item rumor" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">24</span>
-          <span class="item-title">Exclusive | SpaceX Showed Investors Prototype of Elon Musk’s New AI Device</span>
-          <span class="source">WSJ</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">⚠️ 据 WSJ 独家报道，SpaceX 向投资者展示了 Elon Musk 新 AI 设备的原型机。消息人士称该设备为轻薄手持终端，但马斯克本人随后否认了相关报道。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPOWFQd2UyR0hnMVdEcm1LVE5TRUVnYzBfdmJsQlFpaU9qVG5pUUQxY1BQbW05ODk1Qk5JX0ozV3VsN0lsQ2NreGlBYkdwZmRrakZMakZ3Q3BFRkxYWXYzNU5ZSEw5YU1Ba0oxVEJCaEo1UGZCNXBRX0NBb0dBTHViTWRyX2ZOY2ZsMF9PeUlsb0tWVWFvV1hIaEJRaXV4ZG8?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item rumor" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">25</span>
-          <span class="item-title">OpenAI ‘in early talks to give 5% stake to US government’</span>
-          <span class="source">The Guardian</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">⚠️ 卫报报道称，OpenAI 正处于向美国政府出让 5% 股份的早期谈判阶段。此举被解读为 Altman 政治布局的一部分，但 OpenAI 尚未正式确认。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNcXdDM0xqUWpsNGxvS0NWd2RXRE5XVXZISXE3ZXE3VGtxNFNEUmhXNXA4bGNLekhtZlYwVjlUNDY3TWVIaktpZjBuY0NLYmtnWF9CbFFLRnRtVmdDcXlzd1h0X1hHR3F6YVdxSGRaQ0dCcnR5R3N2VUk5WmMxM3RWY3BiWEpXcEpQdlk5dWQtbnE0V0dKLVE?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item rumor" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">26</span>
-          <span class="item-title">Exclusive | Meta Keeps Delaying the Release of Its New AI Model to Developers</span>
-          <span class="source">WSJ</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">⚠️ WSJ 独家报道，Meta 多次推迟向开发者发布其新一代 AI 模型。消息人士透露内部对模型性能和安全审查存在分歧，发布时间表持续延后。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNQzFMQXZWZ1pBUXo2V0Z4eXJQdkMwbHVndW9rQjlmdUN5Y2ZLcmRPNUs3VERiaUZpS2VYMU9GN0l5VGxXbnltajlha2EySWRVUnJhSklTcGMyb1piOWFLX3JCdm42UUJPVmJOM1paUjFEREZMR21aRWJ2eWJfaDV0NzR5QmhaWll6b2Q3dTFCUUVGOHRJa0VkQzR5TjRDS2JwZ1JhVg?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item rumor" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">27</span>
-          <span class="item-title">The Drama Over This $40 Million Movie Reveals a Bleak Truth About the Future of Hollywood</span>
-          <span class="source">Slate Magazine</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">⚠️ Slate 杂志分析了一部 4000 万美元预算电影引发的争议，揭示了 AI 对好莱坞未来的深远影响。文章认为这场戏剧性冲突折射出影视行业在 AI 时代的结构性焦虑。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMid0FVX3lxTFBaTzFaOUY4d3E0Qlc3YWI0RUh6aFNmbDZKSnFVOUVLLTVXcUwyUEd5eDNRWEdfaEl5eVdwMHJfQzRnWExzQ05TekxkSHNFWkk1NlpwTEhtZWR5c3d0QWlzWndVMTBuRzJHa0RPYVlRYlpYYWZHYkln?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-      <div class="item rumor" tabindex="0" onclick="this.classList.toggle('open')">
-        <div class="item-head">
-          <span class="n">28</span>
-          <span class="item-title">Don’t Call It a Phone: What the SpaceX AI Device Rumor Actually Tells Us</span>
-          <span class="source">The Gadgeteer</span>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="item-body">
-          <p class="summary">⚠️ The Gadgeteer 分析了 SpaceX AI 设备传闻背后的真实信号，认为无论&quot;AI 手机&quot;是否属实，这一消息已反映出 Musk 生态对消费级 AI 硬件的野心。</p>
-          <a class="read-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQRWpLR2kzTHJhaWpIYUVMNWtGUE1zU1BHd016Ui0tNktTdmQzN3ZwSXBUcEhmUTFlRHQ3VmdfeTVyckFPaWtXLTdDUTkwUlVUM2VlQl96QnpPNW1MTEg2YWwyQXJOMjVBSzV6NmJhWXZJQVBSUmhVLUFlUldpX0NvQmJGVQ?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">阅读原文 →</a>
-        </div>
-      </div>
-    </section>
+  <div class="header">
+    <h1>🤖 AI 新闻速递</h1>
+    <div class="date">2026-07-07</div>
+    <div class="brand">LUCIEN STUDIO · DAILY AI DIGEST</div>
+  </div>
+  <div class="cred-bar">
+    <span style="color:var(--accent)">● Policy</span>
+    <span style="color:var(--green)">● Business</span>
+    <span style="color:var(--purple)">● Tech Media</span>
+    <span style="color:var(--orange)">● KOLs</span>
+    <span style="color:var(--red)">● Rumors</span>
+    <span>· 可信度从高到低排列</span>
+  </div>
+  <div style="text-align:center;color:var(--muted);font-size:0.85rem;margin-bottom:24px;">共 25 条新闻</div>
+<div class="section">
+  <div class="section-header" style="border-left-color:#4fc3f7">
+    <span class="section-icon">🏛</span>
+    <span class="section-title">Policy & Regulation · 政策与监管</span>
+    <span class="section-count">5 条</span>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#4fc3f7">1</span>
+      <span class="item-title">白宫发布 AI 国家政策框架，确立联邦层面监管方向</span>
+      <span class="item-source">Council on Foreign Relations</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">白宫正式公布人工智能国家立法政策框架，明确提出联邦优先原则，旨在统一各州碎片化监管。该框架涵盖前沿模型审计、国家安全审查与出口管制，预计将引发国会新一轮 AI 立法博弈。</p>
+      <p class="orig-title">原标题：<em>Assessing Trump’s Executive Order on AI Oversight</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxNSEVidm5rTU5JWEFhQTg2YUVNQmZYN2FuamFTOXZhUHZ1bVBxbG02ZGRzZnpvMG9FRzZydE50YlljUFg4UHpjMGVWTWxLYmY4ZWxWaG9nWEtFTDRnZ1lYYVdoa1lvNU92MG5oVkQyR0ctYVBrV1RzeC01ZnlMX1RfUTRRYw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#4fc3f7">2</span>
+      <span class="item-title">伊利诺伊州签署全美最严前沿 AI 模型审计法</span>
+      <span class="item-source">Bloomberg Law News</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">伊利诺伊州州长签署全美首部要求对前沿 AI 模型进行第三方审计的州级法律。该法要求达到一定算力阈值的模型开发商接受独立安全评估，被视为州级 AI 安全监管的标杆。</p>
+      <p class="orig-title">原标题：<em>Illinois Governor Signs Nation’s Strongest Frontier AI Model Law</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPTVpXY3ZVVFN5a084YmhhV2J6TGNzRzM4QnhZZUNVUVlPWFp4RVllM1JrNDRLMzN6QWVvREJqeG9TdU41VWZ1cEVrRExnd3I4N0JVdTBzM2dqRi1vUlNSNXZOVlgzMWZkRUpKbjJDSDVfY09yTUhyeXNJOFVmNjdKdXUxT2JUNnVCSk83TW9NZ3pTQW15Z2psU3FFeVR2QkxkOS1kdU1n?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#4fc3f7">3</span>
+      <span class="item-title">白宫对 Anthropic 的安全举措震动国会 AI 辩论</span>
+      <span class="item-source">Politico</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">白宫近期针对 Anthropic 的安全审查与「自愿协议」举措重新激活了国会对 AI 立法的讨论。两党议员围绕是否需要强制性联邦框架展开激烈交锋，监管节奏明显加快。</p>
+      <p class="orig-title">原标题：<em>White House’s Anthropic move jolts Congress back into the AI debate</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPdnFTYWhxeGt5bnFROHZ6dVBlYjh4MkJjUEZPS2FvQmUxb1lwVDlna3IzZU05M3ZycWRneUlubnJmaWVyWUxid3hxV1l0cVgwZ0NPS3VkYjdKOXBzVW5GaXdnbFhCMGNfRDNuTFo3STRMOVFqNHRHaEN5anhmaHJ3UEpDa3lrUnRzbWdEVjdXTkJPdUZzWGFmVGNLUElEMFc1bV9kWXdUY2hMS0Y3SjlyZHB4Rm9Ia0E?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#4fc3f7">4</span>
+      <span class="item-title">特朗普限制私人 AI 模型，开源社区成为焦点</span>
+      <span class="item-source">The Hill</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">特朗普政府对私营 AI 模型实施新限制，引发对开源生态的广泛关注。政策转向使开源模型开发者面临合规不确定性，也加剧了安全与开放之间的张力。</p>
+      <p class="orig-title">原标题：<em>Trump restrictions on private AI models turn attention to open source</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNM3R4SjNhdDktdk9mME91S1JDcnFHWXo5NkVwd3BqNlU3eEdLcFRKQTh0d3phRkJsQnRiZzBSQzJSbmNZMjdkdVV4TWlLLW1ZWkptNVl2M0I1empwajd1THFMRjI2ZEMtVUFjaXdaai10bnhGejBmOUZGN0NvVEJFa1Rzd1gtR1RxLXVfeEItMFhsd2PSAZgBQVVfeXFMTlU3Mk9MSVZGUmdETnR3dm9YWEY2NE5idHBKWHJXbTdiUjRGRnpTV1FYcGNHaDZTRFg1X2xXQUlZSWVvbVg1LS1zM1FYQnBNNmp4NDlHUnhLVmwwREJnVkZicTJCSjNNQmNaUW5nM2UxZmhuVWF2aUhMMEk1anRqek5Uem5QTEcyN0pEWXhuUjM3WEZDVXRXYks?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#4fc3f7">5</span>
+      <span class="item-title">英国 FCA 官员呼吁将 AI 模型纳入监管范围</span>
+      <span class="item-source">Reuters</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">英国金融行为监管局（FCA）高级官员表示应考虑对 AI 模型本身进行监管，而不仅仅监管其应用场景。这一立场可能影响英国乃至欧洲的 AI 监管路径。</p>
+      <p class="orig-title">原标题：<em>Britain should consider regulating AI models, FCA official says</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOdVFXcEM5RE90LWlqOW9QNXpNYlBSRjJ0Y2dLS3BtN3dzR2IxRzFCUXlGNXVDRTg3TVlMTUN4Vm5PVTRQMkl6b2R2bGRGeGJ2Q3hzRkk0VTBWQ3RRLTZZajc1dWRGR05kVzVvTlg1THBOb3NfUVR4T0xwYnVWVGt1cHBRZld4Wll2aEZ1WmR4OXFkcGFkVTJscjRWbWJZcl9kQnpPdjhqZXNqN0V2RGktQjVKX21lZw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
 </div>
-<footer>
-  <p>归档日期：2026-07-06 | 共 28 条新闻</p>
-  <p>数据来源：Google News RSS | 由 Lucien Studio AI 编辑自动生成</p>
-  <p>🔗 <a href="https://lucium.io">lucium.io</a></p>
-</footer>
+<div class="section">
+  <div class="section-header" style="border-left-color:#81c784">
+    <span class="section-icon">💰</span>
+    <span class="section-title">Business & Markets · 商业与市场</span>
+    <span class="section-count">5 条</span>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#81c784">6</span>
+      <span class="item-title">Anthropic 与 TeraWulf 签署 190 亿美元 AI 基础设施租约</span>
+      <span class="item-source">WSJ</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">AI 公司 Anthropic 与能源矿业公司 TeraWulf 签署高达 190 亿美元的长期租约，建设专用 AI 算力园区。这是迄今为止规模最大的 AI 基础设施交易之一，凸显算力需求的爆炸式增长。</p>
+      <p class="orig-title">原标题：<em>TeraWulf Signs $19 Billion Lease With Anthropic for AI-Infrastructure Campus</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOU0llTW12ck1BS3BsV2ZPR3BNWVFYcEFpcERKajZfUENDRkpZNkQ0ODhDVllBV01uQU9CWjVJNmVsZDV3amthMjJpVThYbHlnNHFsd3BfdW02OEZrVjNhczVQdVRlSDFYMzloa25ibDRJMzgtU09jY0hWTW02elEzOVFKZjN6Tnctd0ZKenFoeU9UZkdqM2xWZ2RzMXFlWVNlY3NUNVE0S3o4WWIzNG16cGRJZ1NlZ204a2NzcjhzTQ?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#81c784">7</span>
+      <span class="item-title">微软裁员 4800 人，战略重心转向 AI 投资</span>
+      <span class="item-source">The Journal Record</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">微软宣布裁员约 4800 人，涉及 Xbox 和商业销售部门，同时加大 AI 领域投入。此举反映科技巨头在 AI 时代重新配置人力资源的趋势，「AI 替代」叙事再次升温。</p>
+      <p class="orig-title">原标题：<em>Microsoft cuts 4,800 jobs amid AI investment shift</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQZ2hrNjc5QVFoTVpjelBVS1h2M2puQjVsMTMzNS05cVFTcksxeUpKUUxPWkY5N1RzVkNtS2ptSWF2eTVwZEtSSU1BNDNXMmo4R3R0bFpHLTBQbnlLdHRvNUlRdHRKSnh3YmZUY1RmcE1ubkY4NEdvWFJoQ2xSbVVDRzVFVGpDS01LVGc?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#81c784">8</span>
+      <span class="item-title">阿里巴巴 AI 大获成功，但商业化变现困难重重</span>
+      <span class="item-source">The New York Times</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">阿里巴巴的 Qwen 系列 AI 模型在性能上表现亮眼，但将其转化为可持续收入仍是难题。NYT 分析指出，中国 AI 公司面临「叫好不叫座」的困境，与美国同行的商业化挑战如出一辙。</p>
+      <p class="orig-title">原标题：<em>Alibaba’s A.I. Is a Hit, but Hard to Turn Into a Moneymaker</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMickFVX3lxTE4wZ2pQY0szQ1ppaVBBLUpBVTQzc0stVExrOUVNZmFuME4zUHQtVkxZMUFVeTdVYmpLX0xWbE9xRk5JR01pXzd3QzlEdWUxeUFUM3hnb2pvb1NEOFh0anBBTTAzZy1Za05faElxZTl2VWtOdw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#81c784">9</span>
+      <span class="item-title">Thrive Holdings 融资 20 亿美元，收购并改造传统服务业</span>
+      <span class="item-source">PYMNTS.com</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">Thrive Holdings 募集 20 亿美元，专门用于收购传统服务型企业并用 AI 技术进行改造。这一模式代表了「AI 原生整合」的新投资策略，吸引了大量私募资本关注。</p>
+      <p class="orig-title">原标题：<em>Thrive Holdings Raises $2 Billion to Buy and Rewire Services Firms With AI</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQcEJybXU1UjVPSF9vRmFYT1NtQnZSWC1QcU1rdC16RFE1MHoyR3p2dU4yMFZNc3NVeGhLX1VtZ0pwMWpjcFo4anJSRGR0cjF6cmtxTnFJdHg4T0k1TnY1bUlHRlhIV2pqNmp5cnN1d1pOakJ0S3A3WUkzQi1XQ1ZiNUxmdnFLSkxaMEVzakdPa1VaNWg2Qi1zbnI1aUY4X2J1NUc0SXhrRWhLSFNXYk9VMVI1RERySGJZTlMyaHprNzB4X2RzcXJDdjRYaw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#81c784">10</span>
+      <span class="item-title">AI 巨头豪掷 80 亿美元破解企业落地难题</span>
+      <span class="item-source">PYMNTS.com</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">主要 AI 公司联合投入约 80 亿美元，旨在解决企业级 AI 采用率低迷的问题。资金将用于开发行业专用工具、降低部署门槛和提升投资回报率。</p>
+      <p class="orig-title">原标题：<em>AI Giants Spend $8 Billion to Fix Enterprise Adoption</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQbERENndJYW1PMVB5VXdvbE9rZldyVmFoOVBpR043X0F2STNCOUE5YlBMVEtfVlFiWDdlVkRfb2JkZG1wWFlwYkZLV2dnZll1UWhWcDJ4YTFBM21ZYXhqeGtWMkpBZGpEVi1vQ0NVYmxJdExGWjRHdE9rZVdENjlGUU4temIxYWpad09SNG9WY2NtWVFtemQ0LWU3Qll0QTZLUW1GUFNxMHF3MFNQZXI3bVBodjJNUQ?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-header" style="border-left-color:#ce93d8">
+    <span class="section-icon">🔬</span>
+    <span class="section-title">Tech Media Deep Dives · 科技深度报道</span>
+    <span class="section-count">6 条</span>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ce93d8">11</span>
+      <span class="item-title">AI「蒸馏」技术为何成为中美竞赛焦点</span>
+      <span class="item-source">The New York Times</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">NYT 深度报道解析 AI 模型蒸馏技术为何成为中美 AI 竞赛的核心争议。蒸馏允许小模型学习大模型能力，既推动了技术普及，也引发了知识产权与安全方面的激烈辩论。</p>
+      <p class="orig-title">原标题：<em>Why A.I. Distillation Has Become a Hot Topic in the Race with China</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMifEFVX3lxTFBvWWhjV01HTEdydTBZQ0JXNEN1WlptQlE2OFNkekl6WmNGVWdiWGxITmRvdXNCdXpVSDdGYlZIaW0wSklwTjNJaWFMbHFnYnpMM3hjUjItcGM1cFhmSnJBM2hxNk5TOHlHTmZqS1FZTHE2UUg2SXR0N3hFZXM?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ce93d8">12</span>
+      <span class="item-title">揭秘硅谷与中国之间的秘密 AI 战争</span>
+      <span class="item-source">The Washington Post</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">华盛顿邮报长篇报道揭示硅谷与中国 AI 产业之间不为人知的竞争内幕，涵盖人才争夺、数据供应链、芯片出口管制等多个维度，呈现了一场没有硝烟的科技冷战全景。</p>
+      <p class="orig-title">原标题：<em>Inside the secret AI war between Silicon Valley and China</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxOUmZBQTlSQUxtV2sza2lTd1dTelc1OFRRNkhEOFhmNjRfVXRwRzlkUnI0ejRvazgtZDVoXzVENTZaT3FnUVo0UWU3WWYzZm1sdHozYW84Z2VMdmVUVjdaUjhKZXhtOFRzVWpWXy1hWEZpUDYyMnk3M0Jhc2tZUlVZVDRTSU1wbFRqM0Z6UW02cXlqYktKZEpTU1pwaHhMQVRBazh5R2ZJR3ZTRzh4bFpCXzdENGlyVHVUNVYtVTF1MnVYdUNucWZV?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ce93d8">13</span>
+      <span class="item-title">Anthropic 反监控立场被揭穿：秘密 Claude 追踪器震惊用户</span>
+      <span class="item-source">Ars Technica</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">Ars Technica 报道，在 Anthropic 高调宣扬反监控立场后，用户发现 Claude 存在秘密追踪功能，引发信任危机。这一发现与公司公开形象形成强烈反差。</p>
+      <p class="orig-title">原标题：<em>Secret Claude tracker shocks users after Anthropic’s anti-surveillance stance</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOd2N3VnZFV1V5RDdCbnpvVkFoZ3ZHUzBCOHpscHRNZHZQTWZCSUFUNkNjRF9sa3phX2lIQWxfRm9NTDJ6ZUNQMmZGNkV2c3VlODlJM0JicDBWaG5uQ1QyM0lhZnpZZkkya28tVjYzMjA2Z0JYdEFucUNfdHZLQUJMMTlOaFR2U1g2ZmdQQms1bXpCWUtHa1d4NUM1QWxaaVBTWS05QUZuc2tvX0JVRy1ybWxVYmJxZ083?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ce93d8">14</span>
+      <span class="item-title">iOS 27 测试版支持自定义 Siri 语速与表达方式</span>
+      <span class="item-source">TechCrunch</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">苹果在最新 iOS 27 测试版中开放 Siri 的语速和表达风格自定义功能，标志着语音助手个性化体验的重大升级。此举被视为苹果追赶 AI 语音体验的重要一步。</p>
+      <p class="orig-title">原标题：<em>You can now customize Siri’s pace and expressivity in the latest iOS 27 beta</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOSjRzYlZTTlFrSkoyS0xKMWhacGppRGJ4WnZZc3l3cGpjYzZpcGUxbDZ3VkdYQ1hiRmpKWklVQ1pYR19kOFQ3aDBSN2lXdDF6Y09sY1ozQmhISDdkbzQ0OEtiSVNOb1YzRGsxZHhEek1Ial8xVFRKSHVpV0c3emxTRjkxMzB1eU5DLTUxT01mOGt6WjZMVVJFbnJqYUYxVWZOcGJjZDNSS2NadkFsQ1Vv?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ce93d8">15</span>
+      <span class="item-title">扎克伯格内部表态：AI 智能体进展不及预期</span>
+      <span class="item-source">TechCrunch</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">扎克伯格在内部会议上告诉员工，AI 智能体（agents）的发展速度低于他的期望。这一坦诚表态揭示了行业对 AI agent 商业化时间表的重新评估。</p>
+      <p class="orig-title">原标题：<em>Mark Zuckerberg tells staff that AI agents haven’t progressed as quickly as he’d hoped</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPNUF3VlFVc0VWdDVKcDRFUTNWdU8yZFlIYW5YRmU0Nkx0dVpXS2NqVE9PZW1UZGc4SGVCem0tVk5weDB2Zlh2R1Y3eS0tOUZtampsTG5wM3hGVUo5bm1tZVlrTDN3UDZUWGx1aGEtVjlyUThxaG41NXFLSUtRX1BwaDhCQ0kyLXQ5dDlOQmtqMFl2RTh0M2I4Mi1yYjZEUFJrVW54S3ZpZy03QnU0amp5WkJ4Z2xmOHFFTHA4?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ce93d8">16</span>
+      <span class="item-title">Meta 将发布具备高级编码能力的新 AI 模型</span>
+      <span class="item-source">SiliconANGLE</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">据 SiliconANGLE 报道，Meta 即将发布一款具备高级代码生成能力的新 AI 模型，进一步加剧与 OpenAI 和 Google 在开发者工具领域的竞争。</p>
+      <p class="orig-title">原标题：<em>Meta to release new AI model with advanced coding capabilities ‘soon’</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQeVY5d2gyYUNXMnNPcnVnV1J6MWRwV2FrY1J6MlBrazN2Mm9xekhXTUFRNUtkQmhFZnUxMmoxNDNkdk5lR3ZJdVFGQTBmeUF5VGNJVGs1akNwUy0tdFc1NmVlSTg5X01zVmVZdXNNNERKZ1AtaXNPMzdpZmk5MlJ2VjAxa25QZWQ0NE5KdVJFMUJHQmYydjFMYk9yX3I?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-header" style="border-left-color:#ffb74d">
+    <span class="section-icon">🎤</span>
+    <span class="section-title">Tech Leaders & KOLs · 领袖与 KOL</span>
+    <span class="section-count">5 条</span>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ffb74d">17</span>
+      <span class="item-title">独家：Anthropic CEO Dario Amodei 呼吁加强 AI 监管</span>
+      <span class="item-source">ABC News - Breaking News, Latest News and Videos</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">Anthropic 首席执行官 Dario Amodei 在独家采访中呼吁对 AI 实施更严格的监管，认为行业自律不足以应对前沿模型的风险。他的立场与多家 AI 公司的「自愿协议」形成对比。</p>
+      <p class="orig-title">原标题：<em>Exclusive: Anthropic CEO calls for stronger regulation of AI</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNTnFDeXdUaGRRY3FzRWFMbVpRbFBrVXVhOHNDWDRMaFQ1T1kzclBENEtWa3R5UDBDQktzb3Z3N0FYUjJsejBwZUY5eURuejdvaFg4eXJrSndRLWdvTGtDcVdwOFdXeHZlVWo4eXJDc3ZGWlg0aTZwak1ySWwtS3hkSzNmdVR3MEhGXzdGRDRjV3dpMzVTOFhDX0o1Z3FBSDBqamfSAacBQVVfeXFMTzVVZEpXZk9NbHhzV241am1weGozclJlMUV6WFd1VFFQSnhoLXhibFlnVnNQaGRsUm5QNjFtT2F4ZXdQUk9BN0VCbHgweEUySVhkMjRHZDROSmRoem1FUGwzTXVVd2wxZWkycDdWZld1RW5JaFJJd0tQMkx2VlkwNG9wS3Z6blByVkFpLV9lbEhjMjNSTDdoQzROTDhPbnlGbTdlRHJIUE0?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ffb74d">18</span>
+      <span class="item-title">微软 CEO Nadella：不能让 AI 巨头吞噬整个经济</span>
+      <span class="item-source">WSJ</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">微软 CEO Satya Nadella 在 WSJ 独家专访中表示，必须防止少数 AI 巨头垄断经济价值，强调需要更广泛的技术普惠。这一表态微妙地指向了 OpenAI 等合作伙伴的扩张野心。</p>
+      <p class="orig-title">原标题：<em>Exclusive | Microsoft’s Satya Nadella: We Can’t Let AI Giants Eat the Economy</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPZW1mUi1WMDBVS2RxVVp1bEpLSmcwWnZoWU9qS1FqY3lGRXBmQjhwZElGNlk2T3lEVEREbFdUNWpBYkdvTDlyaXIwdnhCVXVyaFplVlFzMFZqQVRtVTFlMmo5V0V2VFlSQVBpSnpqdmlnQy1qUG5KY1J0RjZ3ODdDQ05wVnFDQnZtb1F6Y3pzS0dxcGhQZzBuamVGa1F6cGps?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ffb74d">19</span>
+      <span class="item-title">Mira Murati 离开 OpenAI 后首次公开亮相，展示新公司 AI 模型</span>
+      <span class="item-source">observer.com</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">OpenAI 前首席技术官 Mira Murati 在离职后首次接受采访，展示其新初创公司的 AI 模型。她的创业动向备受行业关注，被视为 AI 人才出走大厂、独立创业的标志性事件。</p>
+      <p class="orig-title">原标题：<em>Mira Murati Unveils Her Startup’s A.I. Model in First Interview Since OpenAI</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxOLU05UE5NVWFoWjRfMVhybVROOTh3eG9kQ1cxTnI4emNsWmR2Ymw1djJTNkdBTjBJTDVib1lpcTRHN0xFNFVWay1JVVNmVzktOHFwRUd4cmVlVjYtakNZalNVby0tdjRQdUJfczRCbS1DYi1XV3Boclp2WURWaERwWF9EY0JhVFRsb0E?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ffb74d">20</span>
+      <span class="item-title">Sam Altman 改口：曾预测的「AI 就业末日」或许不会发生</span>
+      <span class="item-source">Time Magazine</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">OpenAI CEO Sam Altman 收回此前关于 AI 导致大规模失业的预测，表示「可能不会发生」。Time 杂志分析了促成这一转变的因素，包括技术落地现实与公众情绪变化。</p>
+      <p class="orig-title">原标题：<em>Sam Altman Says AI ‘Jobs Apocalypse’ He Once Predicted Probably Won’t Happen. What Changed?</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMieEFVX3lxTE5IX2FQdmVtVVdvVm9SSTQxcW9ib0VaTldyN3dnLVB6OUFCa2J3UmIzaTRXUVI4clluRm9aR0ktV0laTzRrakl2Rzk1VzA4LU1tM29Wb0todGt1YVVCTjJKZk1zVlcwM0p2S19BRUJReUxpWE9yT0k4NQ?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ffb74d">21</span>
+      <span class="item-title">Palantir CEO Karp 猛批 OpenAI、Anthropic 的 token 商业模式</span>
+      <span class="item-source">CNBC</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">Palantir 首席执行官 Alex Karp 在 CNBC 采访中严厉批评 OpenAI 和 Anthropic 的按 token 计费模式，称「出了大问题」。他主张 AI 价值应体现在企业实际业务成果中。</p>
+      <p class="orig-title">原标题：<em>Palantir's Karp bashes OpenAI, Anthropic token model: 'Something has gone completely wrong'</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQRFFfb2FXMUNJVDQ2MnBIS0l3MHRiTFN2MUlxelFrc01rakRIeWRMaUktQlRwczl2UWZpdXEwWWRLMlFSQXBNQVh4UFJla0gzbUVNVkV2VXlLdW9mZGlOdVl3ak9Sc2lOdUNiLWlkNkNMWUhwOXNpUXdxd000bmVRR9IBhgFBVV95cUxPTHlva1FyR0F0anlNZjNRd2c4bDYxWXhTNEJUUHhUYkpNQm9qV3UtX3BLMFlWZ2NEc2dheWloeU9Jd3dNekpQMEswY0NwT1pUcTFTeC1kOW83UmluenZoT21kbk5jbTFhQ3NBNUxnQi12TU9QUWdpSml5UWxnTDQzSEN6UnRXdw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+</div>
+<div class="warning-banner">⚠️ <strong>警告：</strong>以下内容来自未经证实的传闻、泄露或匿名消息源，可信度较低。请谨慎对待，以官方公告为准。</div>
+<div class="section">
+  <div class="section-header" style="border-left-color:#ef5350">
+    <span class="section-icon">🫇</span>
+    <span class="section-title">Rumors & Gossip · 传闻与八卦</span>
+    <span class="section-count">4 条</span>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ef5350">22</span>
+      <span class="item-title">SpaceX 向投资者展示马斯克新 AI 设备原型</span>
+      <span class="item-source">WSJ</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">据 WSJ 独家报道，SpaceX 向投资者展示了马斯克新型 AI 手持设备的原型。报道称该设备可能成为 iPhone 的竞争对手，但马斯克随后公开否认相关报道。</p>
+      <p class="orig-title">原标题：<em>Exclusive | SpaceX Showed Investors Prototype of Elon Musk’s New AI Device</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPOWFQd2UyR0hnMVdEcm1LVE5TRUVnYzBfdmJsQlFpaU9qVG5pUUQxY1BQbW05ODk1Qk5JX0ozV3VsN0lsQ2NreGlBYkdwZmRrakZMakZ3Q3BFRkxYWXYzNU5ZSEw5YU1Ba0oxVEJCaEo1UGZCNXBRX0NBb0dBTHViTWRyX2ZOY2ZsMF9PeUlsb0tWVWFvV1hIaEJRaXV4ZG8?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ef5350">23</span>
+      <span class="item-title">xAI 品牌消失？马斯克将 AI 业务更名为 SpaceXAI</span>
+      <span class="item-source">Firstpost</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">据 Firstpost 报道，马斯克似乎已将 xAI 品牌整合进 SpaceX，更名为 SpaceXAI。这一举动引发关于马斯克 AI 战略重组的广泛猜测，但官方尚未正式确认。</p>
+      <p class="orig-title">原标题：<em>xAI is no more: Elon Musk rebrands AI venture as SpaceXAI</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPWEdxWGdtcHNaU3JZcmh1VFJ1OUhSa1l0UU12UHR2ZkdJRkFIYnIzWXlzcXRSbWZYODFsd252UElOMnJSRmY2dGJJWUJJRXF3Uk81c0k2OGFpcUFNTllRSmFLWDNQZXNoUTUyTDlYUEJxUU4zSGM3WnJSU2paNExCSjRBbHpJVjNCUHBtU2hvVFRyVUJDc1J6ZjF0dTZiS3NVaFFR0gGoAUFVX3lxTE9ORG1ZNUJ2QmFMWXJ0dzhENW9ydnFLLVZVVUpjVVIycjFsRmpZdEVIaXhCQ2MxRWxDSi04NEhhYW5MT1R5Sl9OSU9pSXg1enVDVENSNUhrV2kwcFlfa2s0bjJZWkdSWlAtZFBabTE3QmhzTkV1T2RkdXVNVk1DTk40am1LVEREMldmV0gteVRXNXpyR1NfU3BHbmEwaWtaOHNRTHREb0VlOA?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ef5350">24</span>
+      <span class="item-title">Sam Altman 谋求建立 AI 新世界秩序，OpenAI 市场地位下滑</span>
+      <span class="item-source">Fortune</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">Fortune 报道称 Sam Altman 正推动建立由美国主导的国际 AI 治理论坛，同时 OpenAI 在与 Google 和 Anthropic 的竞争中逐渐失去优势。文章将两者关联，暗示战略动机。</p>
+      <p class="orig-title">原标题：<em>Sam Altman seeks new world order for AI as OpenAI slowly loses ground to Google and Anthropic</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQVVB5TmxyRFVVeWM4RmpVakt5dnBPZ0g5RndiOTkxZEk4UnlPemRrY25wX1BBczhBMVRKLXVxY1ppb09pVzJ0dll3dUxsbUhtNFgyZE14WVJ2SEE4QVB2TXVfUjhkVTQ2VWFJbDJPUHFMN2Q1NmI0bVlwQnJoUTY2YmVzd3c1UmlHU05TOGZR?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+  <div class="item" tabindex="0" role="button">
+    <div class="item-header">
+      <span class="n" style="background:#ef5350">25</span>
+      <span class="item-title">传闻：Meta 新模型 Watermelon 性能匹敌 GPT-5.5</span>
+      <span class="item-source">trendingtopics.eu</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="item-body">
+      <p class="summary">据 trendingtopics.eu 报道，Meta 内部代号 Watermelon 的新 AI 模型据传性能已匹配 OpenAI 的 GPT-5.5。该消息尚未经 Meta 官方证实，但已在 AI 社区引发热议。</p>
+      <p class="orig-title">原标题：<em>Meta’s “Watermelon”: New AI Model Reportedly Matches OpenAI’s GPT-5.5</em></p>
+      <a class="read-link" href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBzMTFYV0x2QTV4NTFsNzlPd1Y1cFJXNzhnVGc4cUxqaDRRVmlidVJxYjBKMjZjTkszR0VhcDgzZE1QT2JFT2VDVkhQeWozS3d1NUMzZGVZMWdDM3A2UERsTGVHcw?oc=5" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 阅读原文 →</a>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    <p>📰 Lucien Studio AI 日报 · 每日自动采集编排</p>
+    <p style="margin-top:6px;">数据来源：Google News RSS · 归档日期 2026-07-07</p>
+    <p style="margin-top:8px;"><a href="https://lucium.io">lucium.io</a></p>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.item').forEach(function(item) {
+  function toggle() { item.classList.toggle('open'); }
+  item.addEventListener('click', toggle);
+  item.addEventListener('keydown', function(e) {
+    if(e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); }
+  });
+});
+</script>
 </body>
 </html>
